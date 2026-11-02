@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shoku · turn a saved reel into dinner</title>
+<meta name="description" content="Shoku reads a cooking reel into a recipe page: steps, amounts, and how much of it is already in your fridge. Every cook becomes a version you can go back to.">
+<link rel="canonical" href="https://shoku.gradientdescent.wiki/">
+<meta name="theme-color" content="#131209">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shoku · turn a saved reel into dinner">
+<meta property="og:description" content="A cooking journal for the reels you save. Steps, amounts, fridge matching, and a version for every cook.">
+<meta property="og:image" content="https://shoku.gradientdescent.wiki/assets/og.jpg">
+<meta property="og:url" content="https://shoku.gradientdescent.wiki/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/icon.png" sizes="any">
+<link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Shoku",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Android",
+  "description": "A cooking journal that reads recipes out of reels, matches them against your fridge, and keeps a version for every cook.",
+  "downloadUrl": "https://github.com/hawkaii/shoku/releases/latest",
+  "license": "https://github.com/hawkaii/shoku/blob/main/LICENSE",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link body-4" href="#main">Skip to content</a>
+
+<nav class="nav" aria-label="Shoku">
+  <div class="nav-bar">
+    <a class="brand body-4" href="/">
+      <img src="assets/icon.png" alt="" width="24" height="24">
+      Shoku
+    </a>
+    <div class="nav-links body-5">
+      <a href="#how">How it works</a>
+      <a href="#wall">The Wall</a>
+      <a href="#faq">Questions</a>
+    </div>
+    <a class="button button-sm" href="https://github.com/hawkaii/shoku/releases/latest">Get the app</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="menu" data-open="false" aria-hidden="true">
+  <a class="heading-3" href="#how">How it works</a>
+  <a class="heading-3" href="#wall">The Wall</a>
+  <a class="heading-3" href="#faq">Questions</a>
+  <a class="heading-3" href="https://github.com/hawkaii/shoku/releases/latest">Get the app</a>
+</div>
+
+<main id="main">
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1 class="heading-1 hero-heading">Reels in.<br>Dinner out.</h1>
+        <p class="body-3 hero-sub muted">Shoku turns a cooking reel into a recipe page: steps in order, amounts beside the ingredient they belong to, and a count of what your fridge already covers. Every cook becomes a version you can keep.</p>
+        <div class="hero-actions">
+          <a class="button button-lg" href="https://github.com/hawkaii/shoku/releases/latest">
+            Download for Android
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
+          </a>
+        </div>
+        <div class="hero-proof caption-4">
+          <span>24 MB APK</span><span class="dot"></span>
+          <span>Android</span><span class="dot"></span>
+          <span>Source on GitHub</span>
+        </div>
+        <p class="caption-2 muted">Palak paneer, read from one reel: 23 ingredients, 11 steps, 30 minutes.</p>
+      </div>
+
+      <div class="hero-visual">
+        <img class="hero-reel" src="assets/reels/DbWQLfUBwdu.jpg" width="640" height="1138" alt="A reel thumbnail of chili crisp eggs, kept with the recipe it was read from." fetchpriority="high">
+        <div class="phone">
+          <img src="assets/shots/dish.jpg" width="585" height="1266" alt="The Shoku recipe page for palak paneer: cover photo, 23 ingredients, 11 steps, and how many are in the fridge." fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- tagline reveal -->
+  <section class="tagline" aria-label="What a version is">
+    <div class="wrap">
+      <p class="tagline-text" data-tagline>A reel is something you watch. A version is something you learned.</p>
+    </div>
+  </section>
+
+  <!-- problem to solution -->
+  <section class="section">
+    <div class="wrap split reveal">
+      <div class="section-head">
+        <h2 class="heading-2">The recipe never survives the scroll.</h2>
+        <p class="body-3 muted">You save it. Weeks later the amounts are in the caption, the order is in the audio, and the version you improved last time was never written down anywhere.</p>
+        <p class="body-3 muted">Shoku does the reading. The steps arrive in order, the amounts sit next to their ingredient, and the page remembers what you changed.</p>
+      </div>
+      <div class="card">
+        <p class="caption-3 muted">Palak paneer · v1</p>
+        <div class="stat"><span class="body-5">Steps read from the reel</span><span class="stat-value">11</span></div>
+        <div class="stat"><span class="body-5">Ingredients listed</span><span class="stat-value">23</span></div>
+        <div class="stat"><span class="body-5">Already in the fridge</span><span class="stat-value">5 of 23</span></div>
+        <div class="stat"><span class="body-5">To buy</span><span class="stat-value">17</span></div>
+        <div class="stat"><span class="body-5">Time</span><span class="stat-value">30 min</span></div>
+        <p class="caption-2 muted">Read from the video, so the amounts are estimates. The page says so, and every line can be edited.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- benefits -->
+  <section class="section" aria-labelledby="benefits">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <h2 class="heading-2" id="benefits">What you get out of it.</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="5" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="5" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="5" cy="18" r="1" fill="currentColor" stroke="none"/><path d="M10 6h10M10 12h10M10 18h10"/></svg>
+          </div>
+          <h3 class="title-1">A page you can cook from</h3>
+          <p class="body-6 muted">Steps in order, amounts beside the ingredient, one screen you can read with the pan already hot.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M5 10h14"/><path d="M8 5.5v2"/></svg>
+          </div>
+          <h3 class="title-1">Your fridge answers first</h3>
+          <p class="body-6 muted">Every recipe shows how much you already have, and the exact number of things to buy before you start.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="6" r="2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="8" r="2"/><path d="M7 8v8"/><path d="M17 10v1a4 4 0 0 1-4 4H9"/></svg>
+          </div>
+          <h3 class="title-1">A version for every cook</h3>
+          <p class="body-6 muted">Log what you changed and v2 keeps v1 beside it. Nothing you cooked is ever overwritten.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.6 8.4 8.6 8.6 0 0 1-3.7-.8L3 21l1.9-5.4A8.4 8.4 0 1 1 21 11.5Z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></svg>
+          </div>
+          <h3 class="title-1">Ask at the stove</h3>
+          <p class="body-6 muted">The assistant knows which step you are on, so a question is about the pan in front of you and not the whole internet.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- how it works -->
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <h2 class="heading-2" id="how-title">Three steps, then you are cooking.</h2>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <h3 class="title-2">Save the reel</h3>
+          <p class="body-6 muted">Share a reel to Shoku, or take one from the Wall. The recipe is read once and kept with its steps.</p>
+        </article>
+        <article class="step">
+          <h3 class="title-2">Check the fridge</h3>
+          <p class="body-6 muted">The page counts what you already have. Palak paneer says 5 of 23, so 17 things to buy.</p>
+        </article>
+        <article class="step">
+          <h3 class="title-2">Cook, log, version</h3>
+          <p class="body-6 muted">Your first cook log becomes v1. Every change after it is a version you can return to, with the old one intact.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- wall -->
+  <section class="section" id="wall" aria-labelledby="wall-title">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <h2 class="heading-2" id="wall-title">Every card on the Wall is a reel somebody imported.</h2>
+        <p class="body-3 muted">Twenty one recipes are on the Wall today. Each one was read from a video, and each one keeps its thumbnail, its creator and its step count. Here are nine of them.</p>
+      </div>
+      <div class="reels">
+        <article class="reel">
+          <img src="assets/reels/DSSIlPADyxr.jpg" width="640" height="1138" alt="Palak paneer in a pan" loading="lazy">
+          <div class="reel-caption"><h3 class="title-3">Palak Paneer</h3><p class="caption-5 muted">Richa Gupta · 11 steps</p></div>
+        </article>
+        <article class="reel">
+          <img src="assets/reels/DcbJ2KBzz8u.jpg" width="640" height="1137" alt="Egg ghee roast in a bowl" loading="lazy">
+          <div class="reel-caption"><h3 class="title-3">Egg Ghee Roast</h3><p class="caption-5 muted">Ralston D'Souza · 19 steps</p></div>
+        </article>
+        <article class="reel">
+          <img src="assets/reels/Dd9pc1AyUC4.jpg" width="640" height="1138" alt="Hot honey garlic chicken bread" loading="lazy">
+          <div class="reel-caption"><h3 class="title-3">Hot Honey Garlic Chicken Bread</h3><p class="caption-5 muted">Iram Mansoor · 24 steps</p></div>
+        </article>
+        <article class="reel">
+          <img src="assets/reels/DezCNozzevL.jpg" width="640" height="1136" alt="Nepali style aloo chukauni with potatoes and yoghurt" loading="lazy">
+          <div class="reel-caption"><h3 class="title-3">Nepali Style Aloo Chukauni</h3><p class="caption-5 muted">Ralston D'Souza · 11 steps</p></div>
+        </article>
+        <article class="reel">
+          <img src="assets/reels/DbWQLfUBwdu.jpg" width="640" height="1138" alt="Chili crisp eggs on a plate" loading="lazy">
+          <div class="reel-caption"><h3 class="title-3">Chili Crisp Eggs</h3><p class="caption-5 muted">Braydon Jackson Morgan · 8 steps</p></div>
+        </article>
+        <article class="reel">
+          <img src="assets/reels/Dbsn9P_T0M0.jpg" width="640" height="1136" alt="Lemon pepper chicken with a plate of food held to camera" loading="lazy">
+          <div class="reel-caption"><h3 class="title-3">Lemon Pepper Chicken</h3><p class="caption-5 muted">Ralston D'Souza · 7 steps</p></div>
+        </article>
+        <article class="reel">
+          <img src="assets/reels/DcyEpdRzHtu.jpg" width="640" height="1136" alt="Chikkar chole, a chickpea curry" loading="lazy">
+          <div class="reel-caption"><h3 class="title-3">Chikkar Chole</h3><p class="caption-5 muted">Ralston D'Souza · 16 steps</p></div>
+        </article>
+        <article class="reel">
+          <img src="assets/reels/DdXytYoT6q7.jpg" width="640" height="1137" alt="Egg paratha cut open on a pan" loading="lazy">
+          <div class="reel-caption"><h3 class="title-3">Egg Paratha</h3><p class="caption-5 muted">Ralston D'Souza · 8 steps</p></div>
+        </article>
+        <article class="reel">
+          <img src="assets/reels/DcNHWhiTDK9.jpg" width="640" height="1136" alt="Village style desi chicken curry in a clay pot" loading="lazy">
+          <div class="reel-caption"><h3 class="title-3">Village Style Desi Chicken Curry</h3><p class="caption-5 muted">Ralston D'Souza · 11 steps</p></div>
+        </article>
+      </div>
+      <p class="caption-2 muted" style="margin-top: var(--space-300)">Thumbnails are the reels themselves, kept with each recipe so you can watch it again.</p>
+    </div>
+  </section>
+
+  <!-- showcase -->
+  <section class="section" aria-labelledby="showcase-title">
+    <div class="wrap split reveal">
+      <div class="section-head">
+        <h2 class="heading-2" id="showcase-title">Palak paneer, from a reel to a working page.</h2>
+        <p class="body-3 muted">One reel, read once. The page arrived with eleven steps, twenty three ingredients, and a fridge check that told the truth: five already in the kitchen, seventeen to buy.</p>
+        <p class="body-3 muted">Then it says what it cannot know. Read from the video, amounts may be off. You change the cream, log the cook, and v1 stays exactly as it was.</p>
+      </div>
+      <div class="phone" style="margin-inline: auto">
+        <img src="assets/shots/dish.jpg" width="585" height="1266" alt="The palak paneer page with the steps of the recipe open, each step showing its ingredients and an ask button." loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- receipt -->
+  <section class="section" aria-labelledby="receipt-title">
+    <div class="wrap split reveal">
+      <div class="section-head">
+        <h2 class="heading-2" id="receipt-title">The fridge fills itself from a receipt.</h2>
+        <p class="body-3 muted">Photograph the receipt. The photo goes to a vision model, comes back as lines you confirm, and is not kept. Nothing reaches your kitchen until you say yes to it.</p>
+        <p class="body-3 muted">Brand names are kept, because that is what is written on the packet. Amounts are kept only when the receipt states them.</p>
+      </div>
+      <div>
+        <div class="receipt">
+          <p class="caption-3 muted" style="margin-bottom: var(--space-100)">Read from one photo</p>
+          <div class="receipt-row"><span class="body-3">amul butter</span><span class="amount body-5">500 g</span></div>
+          <div class="receipt-row"><span class="body-3">tata salt</span><span class="amount body-5">1 kg</span></div>
+          <div class="receipt-row"><span class="body-3">lays classic</span><span class="amount body-5">2 pcs</span></div>
+        </div>
+        <p class="caption-2 muted" style="margin-top: var(--space-200)">Real output from a test receipt. Supermarket noise, totals and tax lines are dropped.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <h2 class="heading-2" id="faq-title">Questions, answered plainly.</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary class="title-2">Where do the recipes come from?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer body-6">From reels people import. The Wall is that feed and nothing on it is written by hand: a person imported the reel, the model read it, and the page was kept.</p>
+        </details>
+        <details>
+          <summary class="title-2">Do I need an Instagram account?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer body-6">No. Importing needs a link to the reel, from Instagram or YouTube, and the reel has to be public. Browsing the Wall needs nothing at all.</p>
+        </details>
+        <details>
+          <summary class="title-2">How exact are the amounts?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer body-6">They are read from a video, so they are estimates, and the page says so in one line instead of pretending. Every amount can be edited, and the edit is kept as a version.</p>
+        </details>
+        <details>
+          <summary class="title-2">What happens when I change a recipe?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer body-6">A new version is written on your device and synced to your account. The old version stays, and you can pick it again from the version menu at any time.</p>
+        </details>
+        <details>
+          <summary class="title-2">What does the fridge actually do?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer body-6">It matches each recipe against the items you have and counts what is missing. It converts units only inside a family, grams to kilos and millilitres to litres. It never turns pieces into grams, and it never invents an amount it was not given.</p>
+        </details>
+        <details>
+          <summary class="title-2">Can I add things from a receipt photo?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer body-6">Yes. One photo, read into lines you confirm or fix, then added to the fridge. The photo is sent once, read once, and not stored.</p>
+        </details>
+        <details>
+          <summary class="title-2">Do I need an account?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer body-6">Yes. Your journal, fridge and versions sync to it, and the app keeps working offline once it has synced.</p>
+        </details>
+        <details>
+          <summary class="title-2">Is there an iPhone version?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer body-6">Not yet. The builds are Android APKs, and each release also publishes a debug build for testing.</p>
+        </details>
+        <details>
+          <summary class="title-2">Where does my data live?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer body-6">In Supabase, with reel thumbnails on Google Cloud Storage. The app source is public, so you can read exactly what is sent before you install it.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- final cta -->
+  <section class="cta">
+    <div class="wrap cta-inner reveal">
+      <h2 class="heading-2">Cook the next reel you save.</h2>
+      <p class="body-3 muted">Shoku is free, and every build is published in the open.</p>
+      <div class="cta-actions">
+        <a class="button button-lg" href="https://github.com/hawkaii/shoku/releases/latest">Download for Android</a>
+        <a class="button button-lg button-quiet" href="https://github.com/hawkaii/shoku">Read the source</a>
+      </div>
+      <p class="caption-2 muted">Take the arm64 build for most phones. The debug build sits beside it on the same release.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="body-4">Shoku</p>
+        <p class="caption-2">A cooking journal for the reels you save.</p>
+      </div>
+      <nav class="footer-links caption-2" aria-label="Footer">
+        <a href="#how">How it works</a>
+        <a href="#wall">The Wall</a>
+        <a href="#faq">Questions</a>
+        <a href="https://github.com/hawkaii/shoku">Source</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+    <p class="footer-note caption-5">Every build comes from GitHub Actions. The Android package is 24 MB, and installing it replaces an older Shoku rather than sitting beside it. Built for the Meta Global AI Developer Hackathon, Indie Developer track.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

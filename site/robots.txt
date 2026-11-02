@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shoku.gradientdescent.wiki/sitemap.xml

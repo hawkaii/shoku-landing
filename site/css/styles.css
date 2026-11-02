@@ -1715,3 +1715,12 @@ p {
 .share-panel[data-open="true"] #share-hint {
   color: var(--crimson);
 }
+
+.footer .brand {
+  font-size: 1.5rem;
+}
+
+.footer .brand img {
+  width: 38px;
+  height: 38px;
+}

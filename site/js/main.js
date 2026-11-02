@@ -210,6 +210,83 @@ document.querySelectorAll('.board').forEach(drawBoard);
 
 /* ------------------------------------------------------------ assistant */
 
+/* ------------------------------------------------- the assistant types */
+
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+let playToken = 0;
+
+function hide(el) {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(8px)';
+}
+
+function show(el) {
+  el.style.opacity = '';
+  el.style.transform = '';
+  el.classList.add('turn-in');
+}
+
+async function typeInto(el, token) {
+  const node = Array.from(el.childNodes).find(
+    (n) => n.nodeType === 3 && n.textContent.trim().length > 0,
+  );
+  if (!node) return;
+  const full = node.textContent;
+  el.classList.add('is-typing');
+  node.textContent = '';
+  for (let i = 0; i < full.length; i += 2) {
+    if (token !== playToken) break;
+    node.textContent = full.slice(0, i + 2);
+    await wait(9);
+  }
+  node.textContent = full;
+  el.classList.remove('is-typing');
+}
+
+async function playExchange(panel) {
+  if (!panel || reduceMotion) {
+    panel.querySelectorAll(':scope > *').forEach((el) => {
+      el.style.opacity = '';
+      el.style.transform = '';
+    });
+    return;
+  }
+
+  const token = ++playToken;
+  const kids = Array.from(panel.children);
+  kids.forEach((el) => {
+    el.classList.remove('turn-in');
+    hide(el);
+  });
+
+  await wait(140);
+  let first = true;
+
+  for (const kid of kids) {
+    if (token !== playToken) return;
+
+    if (kid.classList.contains('turn-bot') && first) {
+      first = false;
+      const think = document.createElement('div');
+      think.className = 'thinking';
+      think.setAttribute('aria-hidden', 'true');
+      think.innerHTML = '<i></i><i></i><i></i>';
+      panel.insertBefore(think, kid);
+      await wait(620);
+      if (token !== playToken) {
+        think.remove();
+        return;
+      }
+      think.remove();
+      show(kid);
+      await typeInto(kid, token);
+    } else {
+      show(kid);
+      await wait(200);
+    }
+  }
+}
+
 const tabs = Array.from(document.querySelectorAll('.tab'));
 const panels = Array.from(document.querySelectorAll('.panel'));
 
@@ -220,8 +297,12 @@ function selectTab(tab) {
     const panel = document.getElementById(other.getAttribute('aria-controls'));
     if (panel) {
       panel.dataset.open = String(open);
-      if (open) panel.removeAttribute('hidden');
-      else panel.setAttribute('hidden', '');
+      if (open) {
+        panel.removeAttribute('hidden');
+        playExchange(panel);
+      } else {
+        panel.setAttribute('hidden', '');
+      }
     }
   });
 }
@@ -241,6 +322,24 @@ tabs.forEach((tab, index) => {
 panels.forEach((panel) => {
   if (panel.dataset.open !== 'true') panel.setAttribute('hidden', '');
 });
+
+// The first exchange plays when the demo comes into view, so it arrives the
+// way an answer actually arrives.
+const demo = document.querySelector('.demo');
+if (demo && 'IntersectionObserver' in window) {
+  const demoObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        demoObserver.disconnect();
+        const openPanel = document.querySelector('.panel[data-open="true"]');
+        if (openPanel) playExchange(openPanel);
+      });
+    },
+    { threshold: 0.3 },
+  );
+  demoObserver.observe(demo);
+}
 
 // A panel can be linked to directly, which the page itself does not need but
 // a screenshot or a support reply does.
@@ -339,16 +438,9 @@ const COOK_STEPS = [
     text: 'Cover and cook until wilted, then transfer to a blender jar and blend to a smooth vibrant green puree.',
   },
   {
-    n: 8,
-    shot: 'assets/shots/cook-app-08.jpg',
-    photo: 'assets/cooks/pan.jpg',
-    alt: 'Cook mode at step eight: brown the paneer.',
-    text: 'Heat oil in a separate pan and brown the whole paneer block on all sides.',
-  },
-  {
     n: 11,
     shot: 'assets/shots/cook-app-11.jpg',
-    photo: 'assets/cooks/plate.jpg',
+    photo: 'assets/cooks/pan.jpg',
     alt: 'Cook mode at step eleven: add the paneer and serve.',
     text: 'Add the paneer cubes to the gravy, drizzle with cream and serve.',
   },
@@ -438,7 +530,7 @@ if (duo.shot && duo.rail) {
     duo.share.textContent = shared ? 'Put the sheet away' : 'Share this step';
     duo.note.textContent = shared
       ? 'this is what leaves the app'
-      : 'four steps · the arrow keys work';
+      : 'three steps · the arrow keys work';
   });
 
   document.addEventListener('keydown', (event) => {

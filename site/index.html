@@ -34,6 +34,9 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="nav">
+  <a class="nav-mark" href="/" aria-label="Shoku, home">
+    <img src="assets/brand/plate.svg" alt="" width="62" height="62">
+  </a>
   <div class="nav-bar">
     <a class="brand" href="/" aria-label="Shoku, home">
       <img src="assets/brand/plate.svg" alt="" width="44" height="44">
@@ -85,9 +88,8 @@
           <a href="#import"><span class="n">02</span> Import <span class="what">share it, and it is read</span></a>
           <a href="#assistant"><span class="n">03</span> Assistant <span class="what">ask, edit, suggest, capture</span></a>
           <a href="#fridge"><span class="n">04</span> Fridge <span class="what">what you already have</span></a>
-          <a href="#cook"><span class="n">05</span> The cook <span class="what">the dish, actually made</span></a>
-          <a href="#wall"><span class="n">06</span> From the feed <span class="what">reels become pages</span></a>
-          <a href="#questions"><span class="n">07</span> Questions <span class="what">the honest answers</span></a>
+          <a href="#cook"><span class="n">05</span> The cook <span class="what">the pan, beside the page</span></a>
+          <a href="#questions"><span class="n">06</span> Questions <span class="what">the honest answers</span></a>
         </nav>
       </div>
 
@@ -106,7 +108,8 @@
 
   <!-- 02 · import -------------------------------------------------------- -->
   <section class="section" id="import">
-    <div class="wrap split split-center">
+    <div class="wrap">
+      <div class="split split-center">
       <div class="section-head" style="margin-bottom:0">
         <p class="label label-crimson">02 · Import a reel</p>
         <h2 class="h2">Share the reel. The recipe comes back.</h2>
@@ -138,7 +141,47 @@
           <li><button class="board-note" data-mark="1" type="button"><span class="n">1</span><span>Shoku sits in the share sheet with everything else. One tap, and the reel is on its way.</span></button></li>
         </ol>
       </figure>
-    </div>
+
+
+      </div>
+
+      <div class="section-head" style="margin-top: var(--s-9); margin-bottom: var(--s-6)">
+        <h3 class="h3">Saved on Instagram. Read in Shoku.</h3>
+        <p class="body">Three reels from the feed, and the pages that came back. Nothing is retyped, and the thumbnail stays with the recipe.</p>
+      </div>
+
+      <div class="transfer reveal" id="transfer">
+        <div class="transfer-reels">
+          <figure class="reelcard" style="--i:0">
+            <img src="assets/reels/DcpcVnJTzC3.jpg" width="640" height="1138" alt="A reel of spicy boiled eggs." loading="lazy">
+            <figcaption><span class="t">Spicy Boiled Egg</span>5 steps · read</figcaption>
+          </figure>
+          <figure class="reelcard" style="--i:1">
+            <img src="assets/reels/DdXytYoT6q7.jpg" width="640" height="1137" alt="A reel of egg paratha." loading="lazy">
+            <figcaption><span class="t">Egg Paratha</span>8 steps · read</figcaption>
+          </figure>
+          <figure class="reelcard" style="--i:2">
+            <img src="assets/reels/DbWQLfUBwdu.jpg" width="640" height="1138" alt="A reel of chili crisp eggs." loading="lazy">
+            <figcaption><span class="t">Chili Crisp Eggs</span>8 steps · read</figcaption>
+          </figure>
+        </div>
+
+        <div class="transfer-arrow" aria-hidden="true">
+          <svg viewBox="0 0 190 60">
+            <path class="arrow-line" d="M6 30c34-12 68 12 102 0 14-5 26-6 44-2"/>
+            <path class="arrow-head" d="M142 20l10 8-11 7"/>
+          </svg>
+          <span class="tiny">share, or paste a link</span>
+        </div>
+
+        <figure class="board" data-board="plain">
+          <div class="board-phone" style="width: 248px">
+            <img src="assets/shots/dish.jpg" width="585" height="1266" alt="The palak paneer page that came back: cover photo, ingredients, steps and the fridge count." loading="lazy">
+            <svg class="marks" viewBox="0 0 390 844" preserveAspectRatio="none" aria-hidden="true"></svg>
+          </div>
+          <p class="caption" style="text-align:center">in your cookbook, with its cover</p>
+        </figure>
+      </div>    </div>
   </section>
 
   <!-- 03 · the assistant ------------------------------------------------- -->
@@ -329,140 +372,59 @@
     </div>
   </section>
 
-  <!-- 05 · the cook ------------------------------------------------------- -->
+  <!-- 05 · the cook ------------------------------------------------------ -->
   <section class="section" id="cook">
     <div class="wrap">
       <div class="section-head">
         <p class="label label-crimson">05 · The cook</p>
-        <h2 class="h2">Every step gets its own card.</h2>
-        <p class="body">Cook mode holds one step, one drawn diagram, and the ingredient for that step. Walk it here: tap a number, press the arrows, or swipe the card.</p>
+        <h2 class="h2">The page on one side, the pan on the other.</h2>
+        <p class="body">Four steps from this cook, the ones photographed on 2 November. On the left, the app exactly as it stood at that step. On the right, what the step looked like in the kitchen. Step through them with the numbers, the arrows, or the keyboard.</p>
       </div>
 
-      <div class="walker">
-        <div class="walker-stage">
-          <div class="deck" id="deck">
-            <span class="deck-ghost" aria-hidden="true"></span>
-            <span class="deck-ghost" aria-hidden="true"></span>
-            <article class="stepcard" id="stepcard" tabindex="0" aria-label="Step walker. Swipe, or use the arrow keys.">
-              <div class="stepcard-head">
-                <span class="stepchip">Step <b id="step-num">01</b> <i>of 11</i></span>
-                <span class="tiny" id="step-count">30 min</span>
-              </div>
-              <div class="stepcard-art" id="step-art" aria-hidden="true"></div>
-              <p class="stepcard-text" id="step-text">Wash the palak thoroughly under running water and drain.</p>
-              <div class="stepcard-foot">
-                <img src="assets/brand/plate.svg" alt="">
-                Palak Paneer · read from Richa Gupta’s reel
-              </div>
-            </article>
+      <div class="duo" id="duo">
+        <figure class="duo-pane">
+          <div class="board-phone duo-phone">
+            <img id="app-shot" src="assets/shots/cook-app-01.jpg" width="585" height="1266" alt="Cook mode at step one: wash the palak.">
           </div>
-
-          <div class="rail" id="rail" role="group" aria-label="Jump to a step"></div>
-
-          <div class="walker-controls">
-            <button class="arrow" type="button" id="prev" aria-label="Previous step">←</button>
-            <button class="arrow" type="button" id="next" aria-label="Next step">→</button>
-            <button class="btn btn-sm" type="button" id="share">Share this step</button>
-            <span class="tiny" id="share-note">swipe, or use the arrow keys</span>
-          </div>
-        </div>
-
-        <div>
-          <div class="section-head" style="margin-bottom:0">
-            <h3 class="h3">A step you can send.</h3>
-            <p class="body">Cook mode holds one step at a time: a diagram drawn from the words, the step in large type, and the ingredient it needs underneath. Stay as long as you like, then move on with a swipe.</p>
-            <p class="body">A step you are stuck on can leave the app as a single sheet: the step, its diagram, and where it came from. Nothing to crop, nothing to explain in the caption.</p>
-          </div>
-
-          <div class="share-panel" id="sharePanel">
-            <p class="tiny" id="share-hint">Tap “Share this step” to see the sheet.</p>
-            <aside class="sharecard" id="sharecard" aria-hidden="true">
-              <div class="sc-head"><img src="assets/brand/plate.svg" alt="">Shoku</div>
-              <div class="sc-num" id="sc-num">Step 01 of 11</div>
-              <div class="sc-art" id="sc-art" aria-hidden="true"></div>
-              <div class="sc-text" id="sc-text">Wash the palak thoroughly under running water and drain.</div>
-              <div class="sc-foot">palak paneer · 30 min · read from a reel</div>
-            </aside>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-head" style="margin-top: var(--s-9); margin-bottom: var(--s-6)">
-        <h3 class="h3">And here it is, cooked from that page.</h3>
-        <p class="body">Palak paneer, made on 2 November. Four frames, no styling, taken on a phone in a home kitchen, following the steps above.</p>
-      </div>
-      <div class="polaroids">
-        <figure class="polaroid" style="--tilt:-1.1deg">
-          <img src="assets/cooks/spinach.jpg" width="760" height="529" alt="Blanched spinach in a steel bowl on a kitchen counter." loading="lazy">
-          <figcaption><span class="t">Washed and blanched</span>step 1 · 150 g palak</figcaption>
+          <figcaption class="duo-cap">cook mode · step <b id="duo-step">01</b> of 11</figcaption>
         </figure>
-        <figure class="polaroid" style="--tilt:0.7deg">
-          <img src="assets/cooks/puree.jpg" width="760" height="942" alt="The spinach blended to a bright green puree." loading="lazy">
-          <figcaption><span class="t">Blend it</span>step 4 · smooth puree</figcaption>
-        </figure>
-        <figure class="polaroid" style="--tilt:-0.5deg">
-          <img src="assets/cooks/pan.jpg" width="760" height="942" alt="The puree back in the pan, with paneer cubes added." loading="lazy">
-          <figcaption><span class="t">Paneer in</span>step 8 · browned, then cubed</figcaption>
-        </figure>
-        <figure class="polaroid" style="--tilt:1deg">
-          <img src="assets/cooks/plate.jpg" width="760" height="942" alt="Two steel plates of palak paneer with rice and a bowl of raita." loading="lazy">
-          <figcaption><span class="t">On the plate</span>2 Nov · one cook logged</figcaption>
+
+        <figure class="duo-pane">
+          <div class="photo-card">
+            <img id="cook-photo" src="assets/cooks/spinach.jpg" width="760" height="529" alt="The palak, washed, in a steel bowl.">
+          </div>
+          <figcaption class="duo-cap">your kitchen · 2 November</figcaption>
         </figure>
       </div>
-      <p class="tiny" style="margin-top: var(--s-6)">The app keeps one version per cook. This one became v1.</p>
-    </div>
-  </section>
 
-  <!-- 06 · the wall ------------------------------------------------------- -->
-  <!-- 06 · from the feed ------------------------------------------------ -->
-  <section class="section" id="wall">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="label label-crimson">06 · From the feed</p>
-        <h2 class="h2">Saved on Instagram. Read in Shoku.</h2>
-        <p class="body">Share a reel and it comes back as a page in your cookbook: the steps in order, the ingredients attached, the thumbnail kept so you can watch it again. Nothing is retyped, and nothing is lost in a saves folder.</p>
+      <p class="duo-text" id="duo-text">Wash the palak thoroughly under running water and drain.</p>
+
+      <div class="walker-controls">
+        <div class="rail" id="rail" role="group" aria-label="Jump to a step"></div>
+        <button class="arrow" type="button" id="prev" aria-label="Previous step">←</button>
+        <button class="arrow" type="button" id="next" aria-label="Next step">→</button>
+        <button class="btn btn-sm" type="button" id="share">Share this step</button>
+        <span class="tiny" id="share-note">four steps · the arrow keys work</span>
       </div>
 
-      <div class="transfer reveal" id="transfer">
-        <div class="transfer-reels">
-          <figure class="reelcard" style="--i:0">
-            <img src="assets/reels/DcpcVnJTzC3.jpg" width="640" height="1138" alt="A reel of spicy boiled eggs." loading="lazy">
-            <figcaption><span class="t">Spicy Boiled Egg</span>5 steps · read</figcaption>
-          </figure>
-          <figure class="reelcard" style="--i:1">
-            <img src="assets/reels/DdXytYoT6q7.jpg" width="640" height="1137" alt="A reel of egg paratha." loading="lazy">
-            <figcaption><span class="t">Egg Paratha</span>8 steps · read</figcaption>
-          </figure>
-          <figure class="reelcard" style="--i:2">
-            <img src="assets/reels/DbWQLfUBwdu.jpg" width="640" height="1138" alt="A reel of chili crisp eggs." loading="lazy">
-            <figcaption><span class="t">Chili Crisp Eggs</span>8 steps · read</figcaption>
-          </figure>
-        </div>
-
-        <div class="transfer-arrow" aria-hidden="true">
-          <svg viewBox="0 0 190 60">
-            <path class="arrow-line" d="M6 30c34-12 68 12 102 0 14-5 26-6 44-2"/>
-            <path class="arrow-head" d="M142 20l10 8-11 7"/>
-          </svg>
-          <span class="tiny">share, or paste a link</span>
-        </div>
-
-        <figure class="board" data-board="plain">
-          <div class="board-phone" style="width: 248px">
-            <img src="assets/shots/dish.jpg" width="585" height="1266" alt="The palak paneer page that came back: cover photo, ingredients, steps and the fridge count." loading="lazy">
-            <svg class="marks" viewBox="0 0 390 844" preserveAspectRatio="none" aria-hidden="true"></svg>
-          </div>
-          <p class="caption" style="text-align:center">in your cookbook, with its cover</p>
-        </figure>
+      <div class="share-panel" id="sharePanel">
+        <p class="tiny" id="share-hint">Tap “Share this step” to see the sheet.</p>
+        <aside class="sharecard" id="sharecard" aria-hidden="true">
+          <div class="sc-head"><img src="assets/brand/plate.svg" alt="">Shoku</div>
+          <div class="sc-num" id="sc-num">Step 01 of 11</div>
+          <div class="sc-art"><img id="sc-art" src="assets/cooks/spinach.jpg" alt=""></div>
+          <div class="sc-text" id="sc-text">Wash the palak thoroughly under running water and drain.</div>
+          <div class="sc-foot">palak paneer · 30 min · read from a reel</div>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- 07 · questions ------------------------------------------------------ -->
+  <!-- 06 · questions ------------------------------------------------------ -->
   <section class="section" id="questions">
     <div class="wrap">
       <div class="section-head">
-        <p class="label label-crimson">07 · Questions</p>
+        <p class="label label-crimson">06 · Questions</p>
         <h2 class="h2">The things you would ask a model.</h2>
       </div>
       <div class="faq">

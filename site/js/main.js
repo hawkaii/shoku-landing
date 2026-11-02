@@ -98,79 +98,107 @@ function roughPath(x, y, w, h, seed) {
 function drawBoard(figure) {
   const board = BOARDS[figure.dataset.board];
   const svg = figure.querySelector('.marks');
-  if (!board || !svg) return;
+  const img = figure.querySelector('img');
+  if (!board || !svg || !img) return;
 
   const vbWidth = board.w || 390;
   const { h: vbHeight, marks } = board;
+  const uid = figure.dataset.board;
   svg.setAttribute('viewBox', `0 0 ${vbWidth} ${vbHeight}`);
 
-  const maskId = `cut-${figure.dataset.board}`;
   const defs = document.createElementNS(SVG_NS, 'defs');
-  const mask = document.createElementNS(SVG_NS, 'mask');
-  mask.setAttribute('id', maskId);
-  const white = document.createElementNS(SVG_NS, 'rect');
-  white.setAttribute('width', String(vbWidth));
-  white.setAttribute('height', String(vbHeight));
-  white.setAttribute('fill', 'white');
-  mask.append(white);
 
-  marks.forEach((mark) => {
-    const [x, y, w, h] = mark.box;
-    const hole = document.createElementNS(SVG_NS, 'rect');
-    hole.setAttribute('x', String(x - 4));
-    hole.setAttribute('y', String(y - 4));
-    hole.setAttribute('width', String(w + 8));
-    hole.setAttribute('height', String(h + 8));
-    hole.setAttribute('rx', '10');
-    hole.setAttribute('fill', 'black');
-    mask.append(hole);
+  // the window: a hole in the soft focus layer
+  const mask = document.createElementNS(SVG_NS, 'mask');
+  mask.setAttribute('id', `hole-${uid}`);
+  mask.innerHTML = `<rect width="${vbWidth}" height="${vbHeight}" fill="white"/>`;
+  marks.forEach(({ box: [x, y, w, h] }) => {
+    mask.insertAdjacentHTML(
+      'beforeend',
+      `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" fill="black"/>`,
+    );
   });
   defs.append(mask);
+
+  const blur = document.createElementNS(SVG_NS, 'filter');
+  blur.setAttribute('id', `soft-${uid}`);
+  blur.setAttribute('x', '-5%');
+  blur.setAttribute('y', '-5%');
+  blur.setAttribute('width', '110%');
+  blur.setAttribute('height', '110%');
+  blur.innerHTML = '<feGaussianBlur stdDeviation="5"/>';
+  defs.append(blur);
+
+  const glow = document.createElementNS(SVG_NS, 'filter');
+  glow.setAttribute('id', `glow-${uid}`);
+  glow.setAttribute('x', '-30%');
+  glow.setAttribute('y', '-30%');
+  glow.setAttribute('width', '160%');
+  glow.setAttribute('height', '160%');
+  glow.innerHTML =
+    '<feDropShadow dx="0" dy="0" stdDeviation="7" flood-color="#c8372b" flood-opacity="0.5"/>';
+  defs.append(glow);
+
   svg.append(defs);
 
-  const scrim = document.createElementNS(SVG_NS, 'rect');
-  scrim.setAttribute('width', String(vbWidth));
-  scrim.setAttribute('height', String(vbHeight));
-  scrim.setAttribute('class', 'scrim');
-  scrim.setAttribute('mask', `url(#${maskId})`);
-  svg.append(scrim);
+  // everything outside the window falls back: blurred, dimmed, held behind glass
+  const soft = document.createElementNS(SVG_NS, 'image');
+  soft.setAttribute('href', img.getAttribute('src'));
+  soft.setAttribute('width', vbWidth);
+  soft.setAttribute('height', vbHeight);
+  soft.setAttribute('preserveAspectRatio', 'none');
+  soft.setAttribute('filter', `url(#soft-${uid})`);
+  soft.setAttribute('mask', `url(#hole-${uid})`);
+  soft.setAttribute('class', 'soft-layer');
+  svg.append(soft);
+
+  const veil = document.createElementNS(SVG_NS, 'rect');
+  veil.setAttribute('width', String(vbWidth));
+  veil.setAttribute('height', String(vbHeight));
+  veil.setAttribute('class', 'veil');
+  veil.setAttribute('mask', `url(#hole-${uid})`);
+  svg.append(veil);
 
   marks.forEach((mark, index) => {
     const [x, y, w, h] = mark.box;
-    const path = document.createElementNS(SVG_NS, 'path');
-    path.setAttribute('d', roughPath(x, y, w, h, 11 + index * 37 + figure.dataset.board.length));
-    path.setAttribute('class', 'mark');
-    path.dataset.mark = String(mark.n);
-    path.style.setProperty('--delay', `${index * 160}ms`);
-    svg.append(path);
+
+    const halo = document.createElementNS(SVG_NS, 'rect');
+    halo.setAttribute('x', String(x));
+    halo.setAttribute('y', String(y));
+    halo.setAttribute('width', String(w));
+    halo.setAttribute('height', String(h));
+    halo.setAttribute('rx', '12');
+    halo.setAttribute('class', 'window-halo');
+    halo.setAttribute('filter', `url(#glow-${uid})`);
+    svg.append(halo);
+
+    const frame = document.createElementNS(SVG_NS, 'rect');
+    frame.setAttribute('x', String(x));
+    frame.setAttribute('y', String(y));
+    frame.setAttribute('width', String(w));
+    frame.setAttribute('height', String(h));
+    frame.setAttribute('rx', '12');
+    frame.setAttribute('class', 'window');
+    frame.style.setProperty('--delay', `${index * 140}ms`);
+    frame.dataset.mark = String(mark.n);
+    svg.append(frame);
 
     const pin = document.createElementNS(SVG_NS, 'g');
-    const circle = document.createElementNS(SVG_NS, 'circle');
-    circle.setAttribute('class', 'mark-pin');
-    circle.setAttribute('cx', String(x));
-    circle.setAttribute('cy', String(y));
-    circle.setAttribute('r', '9.5');
-    const label = document.createElementNS(SVG_NS, 'text');
-    label.setAttribute('class', 'mark-pin-label');
-    label.setAttribute('x', String(x));
-    label.setAttribute('y', String(y + 3.2));
-    label.setAttribute('text-anchor', 'middle');
-    label.textContent = String(mark.n);
-    pin.append(circle, label);
-    pin.style.setProperty('--delay', `${index * 160}ms`);
+    pin.setAttribute('class', 'window-pin');
+    pin.style.setProperty('--delay', `${index * 140}ms`);
+    pin.innerHTML =
+      `<circle cx="${x}" cy="${y}" r="12.5" class="pin-ring"/>` +
+      `<circle cx="${x}" cy="${y}" r="8.5" class="pin-dot"/>` +
+      `<text x="${x}" y="${y + 3.4}" text-anchor="middle" class="pin-num">${mark.n}</text>`;
     svg.append(pin);
-
-    path.dataset.length = String(path.getTotalLength ? path.getTotalLength() : 900);
-    path.style.setProperty('--len', path.dataset.length);
   });
 
-  // The notes under the phone light their mark, and the other way round.
+  // The notes under the phone light their window, and the other way round.
   figure.querySelectorAll('.board-note').forEach((note) => {
-    const id = note.dataset.mark;
-    const path = svg.querySelector(`.mark[data-mark="${id}"]`);
-    if (!path) return;
-    const light = () => path.classList.add('lit');
-    const dim = () => path.classList.remove('lit');
+    const frame = svg.querySelector(`.window[data-mark="${note.dataset.mark}"]`);
+    if (!frame) return;
+    const light = () => frame.classList.add('lit');
+    const dim = () => frame.classList.remove('lit');
     note.addEventListener('mouseenter', light);
     note.addEventListener('focus', light);
     note.addEventListener('mouseleave', dim);
@@ -294,83 +322,43 @@ if (reduceMotion || !('IntersectionObserver' in window)) {
 
 /* ---------------------------------------------------------- step walker */
 
-/* The frames from the cook itself, by step number (1 based). */
-const STEP_PHOTOS = {
-  1: "assets/cooks/spinach.jpg",
-  4: "assets/cooks/puree.jpg",
-  8: "assets/cooks/pan.jpg",
-  11: "assets/cooks/plate.jpg",
-};
-
-const WALK_STEPS = [
-  'Wash the palak thoroughly under running water and drain.',
-  'Heat ghee in a pan and add chopped garlic, green chilli and sliced onion.',
-  'Add the washed palak and fresh coriander to the pan.',
-  'Cover and cook until wilted, then transfer to a blender jar and blend to a smooth vibrant green puree.',
-  'Heat ghee in the same pan and temper bayleaf, cardamom pods and cloves.',
-  'Add finely chopped ginger, chopped tomato, jeera powder, coriander powder and garam masala and cook until soft and jammy.',
-  'Add the blended palak puree, water, salt, kasuri methi and cream and simmer.',
-  'Heat oil in a separate pan and brown the whole paneer block on all sides.',
-  'Cut the browned paneer into cubes.',
-  'Heat ghee for tadka and sizzle smashed garlic, dried red chillies, jeera and red chilli powder and pour over the curry.',
-  'Add the paneer cubes to the gravy, drizzle with cream and serve.',
+/* Four steps of this cook: the app's screen, and the photo it became. */
+const COOK_STEPS = [
+  {
+    n: 1,
+    shot: 'assets/shots/cook-app-01.jpg',
+    photo: 'assets/cooks/spinach.jpg',
+    alt: 'Cook mode at step one: wash the palak.',
+    text: 'Wash the palak thoroughly under running water and drain.',
+  },
+  {
+    n: 4,
+    shot: 'assets/shots/cook-app-04.jpg',
+    photo: 'assets/cooks/puree.jpg',
+    alt: 'Cook mode at step four: blend the palak to a puree.',
+    text: 'Cover and cook until wilted, then transfer to a blender jar and blend to a smooth vibrant green puree.',
+  },
+  {
+    n: 8,
+    shot: 'assets/shots/cook-app-08.jpg',
+    photo: 'assets/cooks/pan.jpg',
+    alt: 'Cook mode at step eight: brown the paneer.',
+    text: 'Heat oil in a separate pan and brown the whole paneer block on all sides.',
+  },
+  {
+    n: 11,
+    shot: 'assets/shots/cook-app-11.jpg',
+    photo: 'assets/cooks/plate.jpg',
+    alt: 'Cook mode at step eleven: add the paneer and serve.',
+    text: 'Add the paneer cubes to the gravy, drizzle with cream and serve.',
+  },
 ];
 
-const DARK_INK = { stroke: '#f5efe6', crimson: '#c8372b', leaf: '#4ea882' };
-const LIGHT_INK = { stroke: '#1c1614', crimson: '#9e281e', leaf: '#28664b' };
-
-/* The app picks a drawing from the words in the step. So does this. */
-function motionFor(text) {
-  const t = text.toLowerCase();
-  if (t.includes('serve') || t.includes('plate')) return 'plate';
-  if (t.includes('chop') || t.includes('slice') || t.includes('cube')) return 'chop';
-  if (t.includes('simmer') || t.includes('cook') || t.includes('heat') || t.includes('fry') || t.includes('temper')) return 'simmer';
-  if (t.includes('blend') || t.includes('cover') || t.includes('add')) return 'fold';
-  return 'plate';
-}
-
-const SHAPES = {
-  plate: (c) => `<svg viewBox="0 0 256 256" fill="none">
-    <ellipse cx="128" cy="134" rx="92" ry="74" stroke="${c.stroke}" stroke-width="9"/>
-    <ellipse cx="128" cy="126" rx="70" ry="54" stroke="${c.stroke}" stroke-width="9"/>
-    <circle cx="112" cy="120" r="25" fill="${c.crimson}"/>
-    <path d="M112 96c-6-9-14-12-22-11 3 8 8 12 15 14-5 2-8 6-9 11 8 1 13-2 16-7 3 5 8 8 16 7-1-5-4-9-9-11 7-2 12-6 15-14-8-1-16 2-22 11z" fill="${c.leaf}"/>
-    <path d="M152 140c11-12 27-15 37-8-9 14-26 18-37 8z" fill="${c.leaf}"/>
-  </svg>`,
-  chop: (c) => `<svg viewBox="0 0 256 256" fill="none" stroke="${c.stroke}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="26" y="158" width="204" height="52" rx="14"/>
-    <path d="M132 40h48a16 16 0 0 1 16 16v56a16 16 0 0 1-16 16h-48Z" fill="${c.crimson}" stroke="${c.crimson}"/>
-    <path d="M196 40l38 12v24l-38 8Z" fill="${c.stroke}" stroke="${c.stroke}"/>
-    <circle cx="66" cy="140" r="9" fill="${c.leaf}" stroke="none"/>
-    <circle cx="94" cy="124" r="7" fill="${c.stroke}" stroke="none"/>
-    <circle cx="74" cy="112" r="5" fill="${c.stroke}" stroke="none"/>
-  </svg>`,
-  simmer: (c) => `<svg viewBox="0 0 256 256" fill="none" stroke="${c.stroke}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M36 116h184v58a44 44 0 0 1-44 44H80a44 44 0 0 1-44-44Z"/>
-    <path d="M36 116c26 12 46-8 74 0s52 12 74 0" stroke="${c.crimson}"/>
-    <path d="M74 92c0-14 14-14 14-30"/>
-    <path d="M128 92c0-14 14-14 14-30"/>
-    <path d="M182 92c0-14 14-14 14-30"/>
-  </svg>`,
-  fold: (c) => `<svg viewBox="0 0 256 256" fill="none" stroke="${c.stroke}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M34 118h188c0 46-38 80-94 80s-94-34-94-80Z"/>
-    <ellipse cx="128" cy="118" rx="94" ry="16"/>
-    <path d="M148 26l44 44-58 58"/>
-    <ellipse cx="96" cy="146" rx="30" ry="16" fill="${c.leaf}" stroke="${c.leaf}"/>
-  </svg>`,
-};
-
-function diagram(motion, colours) {
-  return (SHAPES[motion] || SHAPES.plate)(colours);
-}
-
-const deck = document.getElementById('deck');
-const walk = {
-  card: document.getElementById('stepcard'),
-  num: document.getElementById('step-num'),
-  count: document.getElementById('step-count'),
-  art: document.getElementById('step-art'),
-  text: document.getElementById('step-text'),
+const duo = {
+  shot: document.getElementById('app-shot'),
+  photo: document.getElementById('cook-photo'),
+  num: document.getElementById('duo-step'),
+  text: document.getElementById('duo-text'),
   rail: document.getElementById('rail'),
   prev: document.getElementById('prev'),
   next: document.getElementById('next'),
@@ -383,132 +371,83 @@ const walk = {
   scText: document.getElementById('sc-text'),
 };
 
-if (walk.card && walk.rail) {
+if (duo.shot && duo.rail) {
   let index = 0;
   let shared = false;
 
-  const pad = (n) => String(n + 1).padStart(2, '0');
+  const pad = (n) => String(n).padStart(2, '0');
 
-  WALK_STEPS.forEach((_, i) => {
+  COOK_STEPS.forEach((step, i) => {
     const b = document.createElement('button');
     b.type = 'button';
-    b.textContent = String(i + 1).padStart(2, '0');
-    b.setAttribute('aria-label', `Step ${i + 1}`);
+    b.textContent = pad(step.n);
+    b.setAttribute('aria-label', `Step ${step.n}`);
     b.addEventListener('click', () => go(i));
-    walk.rail.append(b);
+    duo.rail.append(b);
   });
 
   function paint(animate) {
-    const text = WALK_STEPS[index];
-    const motion = motionFor(text);
-    const photo = STEP_PHOTOS[index + 1];
+    const step = COOK_STEPS[index];
 
-    walk.num.textContent = pad(index);
-    walk.art.innerHTML = photo
-      ? `<img src="${photo}" alt="The dish at this step, photographed while cooking."><span class="art-tag">your photo · 2 nov</span>`
-      : `${diagram(motion, DARK_INK)}<span class="art-tag">drawn from the words</span>`;
-    walk.text.textContent = text;
-    walk.scNum.textContent = `Step ${pad(index)} of ${WALK_STEPS.length}`;
-    walk.scArt.innerHTML = photo
-      ? `<img src="${photo}" alt="">`
-      : diagram(motion, LIGHT_INK);
-    walk.scText.textContent = text;
+    duo.shot.src = step.shot;
+    duo.shot.alt = step.alt;
+    duo.photo.src = step.photo;
+    duo.num.textContent = pad(step.n);
+    duo.text.textContent = step.text;
+    duo.scNum.textContent = `Step ${pad(step.n)} of 11`;
+    duo.scArt.src = step.photo;
+    duo.scText.textContent = step.text;
 
-    Array.from(walk.rail.children).forEach((b, i) => {
+    Array.from(duo.rail.children).forEach((b, i) => {
       b.setAttribute('aria-current', String(i === index));
     });
 
-    walk.prev.disabled = index === 0;
-    walk.next.disabled = index === WALK_STEPS.length - 1;
+    duo.prev.disabled = index === 0;
+    duo.next.disabled = index === COOK_STEPS.length - 1;
 
     if (animate && !reduceMotion) {
-      walk.card.animate(
+      duo.photo.animate(
         [
-          { opacity: 0.35, transform: 'translateY(6px)' },
+          { opacity: 0.25, transform: 'scale(1.015)' },
           { opacity: 1, transform: 'none' },
         ],
-        { duration: 360, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+        { duration: 420, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
       );
+      duo.shot.animate([{ opacity: 0.4 }, { opacity: 1 }], {
+        duration: 420,
+        easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      });
     }
   }
 
   function go(next) {
-    const clamped = Math.max(0, Math.min(WALK_STEPS.length - 1, next));
+    const clamped = Math.max(0, Math.min(COOK_STEPS.length - 1, next));
     if (clamped === index) return;
     index = clamped;
     paint(true);
   }
 
-  walk.prev.addEventListener('click', () => go(index - 1));
-  walk.next.addEventListener('click', () => go(index + 1));
+  duo.prev.addEventListener('click', () => go(index - 1));
+  duo.next.addEventListener('click', () => go(index + 1));
 
-  walk.card.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowRight') {
-      event.preventDefault();
-      go(index + 1);
-    }
-    if (event.key === 'ArrowLeft') {
-      event.preventDefault();
-      go(index - 1);
-    }
-  });
-
-  /* swipe on the card, the way the app moves between steps */
-  let startX = null;
-  let dx = 0;
-
-  walk.card.addEventListener('pointerdown', (event) => {
-    if (event.pointerType === 'mouse' && event.button !== 0) return;
-    startX = event.clientX;
-    dx = 0;
-    walk.card.classList.add('is-dragging');
-    walk.card.setPointerCapture(event.pointerId);
-  });
-
-  walk.card.addEventListener('pointermove', (event) => {
-    if (startX === null) return;
-    dx = event.clientX - startX;
-    walk.card.style.transform = `translateX(${dx * 0.35}px)`;
-  });
-
-  const endDrag = () => {
-    if (startX === null) return;
-    walk.card.classList.remove('is-dragging');
-    walk.card.style.transform = '';
-    if (dx < -50) go(index + 1);
-    else if (dx > 50) go(index - 1);
-    startX = null;
-    dx = 0;
-  };
-
-  walk.card.addEventListener('pointerup', endDrag);
-  walk.card.addEventListener('pointercancel', endDrag);
-  walk.card.addEventListener('pointerleave', endDrag);
-
-  /* the sheet a shared step becomes */
-  walk.share.addEventListener('click', () => {
+  duo.share.addEventListener('click', () => {
     shared = !shared;
-    walk.panel.dataset.open = String(shared);
-    walk.sheet.dataset.open = String(shared);
-    walk.sheet.setAttribute('aria-hidden', String(!shared));
-    walk.share.textContent = shared ? 'Put the sheet away' : 'Share this step';
-    walk.note.textContent = shared
+    duo.panel.dataset.open = String(shared);
+    duo.sheet.dataset.open = String(shared);
+    duo.sheet.setAttribute('aria-hidden', String(!shared));
+    duo.share.textContent = shared ? 'Put the sheet away' : 'Share this step';
+    duo.note.textContent = shared
       ? 'this is what leaves the app'
-      : 'swipe, or use the arrow keys';
-    const hint = document.getElementById('share-hint');
-    if (hint) {
-      hint.textContent = shared
-        ? 'The sheet, ready to send.'
-        : 'Tap “Share this step” to see the sheet.';
-    }
+      : 'four steps · the arrow keys work';
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.target.closest('input, textarea')) return;
+    if (event.key === 'ArrowRight') go(index + 1);
+    if (event.key === 'ArrowLeft') go(index - 1);
   });
 
   paint(false);
-
-  // `?share=1` opens the sheet, which is how it gets screenshotted.
-  if (new URLSearchParams(window.location.search).get('share') === '1') {
-    walk.share.click();
-  }
 }
 
 /* --------------------------------------------------------- mobile menu */

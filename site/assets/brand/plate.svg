@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <!-- plate, seen slightly from above: rim, inner well, cast edge -->
+  <ellipse cx="128" cy="134" rx="93" ry="76" fill="#1C1614"/>
+  <ellipse cx="128" cy="129" rx="84" ry="68" fill="#1C1614"/>
+  <ellipse cx="128" cy="127" rx="74" ry="59" fill="#FFFDF9"/>
+  <ellipse cx="128" cy="127" rx="58" ry="45" fill="#F7F3EB"/>
+  <!-- rim highlight -->
+  <path d="M56 118c8-24 34-42 72-42s64 18 72 42" stroke="#1C1614" stroke-opacity=".18" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- tomato -->
+  <circle cx="116" cy="120" r="27" fill="#9E281E"/>
+  <ellipse cx="108" cy="111" rx="7" ry="4.5" fill="#FFFDF9" fill-opacity=".35"/>
+  <!-- calyx: three simple leaves -->
+  <path d="M116 96c-6-9-14-12-22-11 3 8 8 12 15 14-5 2-8 6-9 11 8 1 13-2 16-7 3 5 8 8 16 7-1-5-4-9-9-11 7-2 12-6 15-14-8-1-16 2-22 11z" fill="#28664B"/>
+
+  <!-- leaf beside the tomato -->
+  <path d="M148 138c10-12 26-15 36-8-9 14-25 18-36 8z" fill="#28664B"/>
+  <path d="M148 138c12-3 24-6 34-8" stroke="#FFFDF9" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>
+</svg>

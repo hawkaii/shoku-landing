@@ -1986,7 +1986,7 @@ p {
 /* ------------------------------------------------------------------ brand */
 
 .nav-mark {
-  position: fixed;
+  position: absolute;
   top: 22px;
   left: 26px;
   z-index: 45;

@@ -17,10 +17,10 @@ product.
 
 | | |
 |---|---|
-| Paper | `#F7F3EB`, surface `#FFFDF9`, sunken `#EFE9DD` |
-| Ink | `#1C1614`, muted `#6E5F58`, hairline `#DED5C8` |
-| Accent | crimson `#9E281E`, green `#28664B`, amber `#B87314` |
-| The device | night `#141110`, chalk `#F5EFE6` |
+| Night | `#141110`, surface `#1E1A18`, sunken `#292320` |
+| Ink | `#F5EFE6`, muted `#A6988E`, hairline `#332B27` |
+| Accent | crimson `#C8372B`, green `#4EA882`, amber `#E09F3E` |
+| Print | `#FFFDF9`, used only for polaroids and the share sheet |
 | Type | Fraunces for display, Plus Jakarta Sans for reading, JetBrains Mono for labels and numbers |
 | Radius | 6 chip, 8 media, 12 card, 20 sheet, 999 pill |
 | Motion | one curve, `cubic-bezier(0.22,1,0.36,1)` |

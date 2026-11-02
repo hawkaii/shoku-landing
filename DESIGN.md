@@ -7,8 +7,10 @@ product page.
 
 ## The idea
 
-Shoku is a kitchen ticket. Paper, ink, one hot accent, hairlines everywhere,
-and mono for anything you measure. Brutalism survives in exactly two places:
+Shoku is a kitchen ticket at night. Near black, one hot accent, hairlines
+everywhere, and mono for anything you measure. The only light surfaces on the
+page are the polaroids and the share sheet, because those are the things you
+would print. Brutalism survives in exactly two places:
 the primary button and the cook timer. Nothing glows, nothing floats in a
 gradient, nothing is glassmorphic.
 
@@ -16,16 +18,16 @@ gradient, nothing is glassmorphic.
 
 | Token | Value | Use |
 |---|---|---|
-| paper | `#F7F3EB` | page |
-| surface | `#FFFDF9` | tickets, cards |
-| sunken | `#EFE9DD` | hover, table stripes |
-| ink | `#1C1614` | text, borders |
-| muted | `#6E5F58` | secondary text |
-| hairline | `#DED5C8` | every rule |
-| crimson | `#9E281E` | accent, the full stop, one button per screen |
-| green | `#28664B` | additions |
-| amber | `#B87314` | adjustments |
-| night | `#141110` | the device, and only the device |
+| night | `#141110` | page |
+| surface | `#1E1A18` | tickets, cards |
+| sunken | `#292320` | hover, table stripes |
+| ink | `#F5EFE6` | text |
+| muted | `#A6988E` | secondary text |
+| hairline | `#332B27` | every rule |
+| crimson | `#C8372B` | accent, the full stop, one button per screen |
+| green | `#4EA882` | additions |
+| amber | `#E09F3E` | adjustments |
+| print | `#FFFDF9` | polaroids and the share sheet, the only light surfaces |
 | chalk | `#F5EFE6` | annotations drawn on a screenshot |
 
 Never a gradient. Never a coloured shadow. Never a second accent.

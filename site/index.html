@@ -34,20 +34,33 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="nav">
-  <div class="wrap nav-inner">
-    <a class="brand" href="/">
-      <img src="assets/brand/plate.svg" alt="" width="27" height="27">
+  <div class="nav-bar">
+    <a class="brand" href="/" aria-label="Shoku, home">
+      <img src="assets/brand/plate.svg" alt="" width="44" height="44">
       Shoku<span class="dot">.</span>
     </a>
     <nav class="nav-links" aria-label="Sections">
       <a href="#import">Import</a>
       <a href="#assistant">Assistant</a>
       <a href="#fridge">Fridge</a>
+      <a href="#cook">Cook</a>
       <a href="#questions">Questions</a>
     </nav>
     <a class="btn btn-sm" href="https://github.com/hawkaii/shoku/releases/latest">Download</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span></span>
+    </button>
   </div>
 </header>
+
+<div class="mobile-menu" id="menu" data-open="false" aria-hidden="true">
+  <a href="#import">Import</a>
+  <a href="#assistant">Assistant</a>
+  <a href="#fridge">Fridge</a>
+  <a href="#cook">Cook</a>
+  <a href="#questions">Questions</a>
+  <a href="https://github.com/hawkaii/shoku/releases/latest">Download</a>
+</div>
 
 <main id="main">
 
@@ -321,8 +334,62 @@
     <div class="wrap">
       <div class="section-head">
         <p class="label label-crimson">05 · The cook</p>
-        <h2 class="h2">This is the dish, cooked from that page.</h2>
-        <p class="body">Palak paneer, made on 2 November from the recipe the model read out of the reel. Four frames, no styling, taken on a phone in a home kitchen. The steps on the page are the steps that were followed.</p>
+        <h2 class="h2">Every step gets its own card.</h2>
+        <p class="body">Cook mode holds one step, one drawn diagram, and the ingredient for that step. Walk it here: tap a number, press the arrows, or swipe the card.</p>
+      </div>
+
+      <div class="walker">
+        <div class="walker-stage">
+          <div class="deck" id="deck">
+            <span class="deck-ghost" aria-hidden="true"></span>
+            <span class="deck-ghost" aria-hidden="true"></span>
+            <article class="stepcard" id="stepcard" tabindex="0" aria-label="Step walker. Swipe, or use the arrow keys.">
+              <div class="stepcard-head">
+                <span class="stepchip">Step <b id="step-num">01</b> <i>of 11</i></span>
+                <span class="tiny" id="step-count">30 min</span>
+              </div>
+              <div class="stepcard-art" id="step-art" aria-hidden="true"></div>
+              <p class="stepcard-text" id="step-text">Wash the palak thoroughly under running water and drain.</p>
+              <div class="stepcard-foot">
+                <img src="assets/brand/plate.svg" alt="">
+                Palak Paneer · read from Richa Gupta’s reel
+              </div>
+            </article>
+          </div>
+
+          <div class="rail" id="rail" role="group" aria-label="Jump to a step"></div>
+
+          <div class="walker-controls">
+            <button class="arrow" type="button" id="prev" aria-label="Previous step">←</button>
+            <button class="arrow" type="button" id="next" aria-label="Next step">→</button>
+            <button class="btn btn-sm" type="button" id="share">Share this step</button>
+            <span class="tiny" id="share-note">swipe, or use the arrow keys</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-head" style="margin-bottom:0">
+            <h3 class="h3">A step you can send.</h3>
+            <p class="body">Cook mode holds one step at a time: a diagram drawn from the words, the step in large type, and the ingredient it needs underneath. Stay as long as you like, then move on with a swipe.</p>
+            <p class="body">A step you are stuck on can leave the app as a single sheet: the step, its diagram, and where it came from. Nothing to crop, nothing to explain in the caption.</p>
+          </div>
+
+          <div class="share-panel" id="sharePanel">
+            <p class="tiny" id="share-hint">Tap “Share this step” to see the sheet.</p>
+            <aside class="sharecard" id="sharecard" aria-hidden="true">
+              <div class="sc-head"><img src="assets/brand/plate.svg" alt="">Shoku</div>
+              <div class="sc-num" id="sc-num">Step 01 of 11</div>
+              <div class="sc-art" id="sc-art" aria-hidden="true"></div>
+              <div class="sc-text" id="sc-text">Wash the palak thoroughly under running water and drain.</div>
+              <div class="sc-foot">palak paneer · 30 min · read from a reel</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-head" style="margin-top: var(--s-9); margin-bottom: var(--s-6)">
+        <h3 class="h3">And here it is, cooked from that page.</h3>
+        <p class="body">Palak paneer, made on 2 November. Four frames, no styling, taken on a phone in a home kitchen, following the steps above.</p>
       </div>
       <div class="polaroids">
         <figure class="polaroid" style="--tilt:-1.1deg">

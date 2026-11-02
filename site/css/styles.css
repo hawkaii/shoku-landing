@@ -29,24 +29,28 @@
 }
 
 :root {
-  /* Paper. */
-  --paper: #f7f3eb;
-  --surface: #fffdf9;
-  --sunken: #efe9dd;
-  --ink: #1c1614;
-  --muted: #6e5f58;
-  --hair: #ded5c8;
-  --crimson: #9e281e;
-  --crimson-press: #7d1f17;
+  /* Night. The app's dark theme, which is what most people see. */
+  --paper: #141110;
+  --surface: #1e1a18;
+  --sunken: #292320;
+  --ink: #f5efe6;
+  --muted: #a6988e;
+  --hair: #332b27;
+  --crimson: #c8372b;
+  --crimson-press: #a82c22;
   --on-crimson: #fff9f5;
-  --green: #28664b;
-  --amber: #b87314;
+  --green: #4ea882;
+  --amber: #e09f3e;
 
-  /* The device. */
+  /* The device, and the printed page that sits on the night. */
   --night: #141110;
   --night-surface: #1e1a18;
   --night-hair: #332b27;
   --chalk: #f5efe6;
+  --print: #fffdf9;
+  --print-ink: #1c1614;
+  --print-muted: #6e5f58;
+  --print-hair: #ded5c8;
 
   /* Spacing, the app's own scale. */
   --s-1: 2px;
@@ -258,20 +262,27 @@ p {
 /* ----------------------------------------------------------------- nav */
 
 .nav {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  inset: var(--s-5) 0 auto;
   z-index: 40;
-  background: rgba(247, 243, 235, 0.9);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--hair);
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--s-5);
+  pointer-events: none;
 }
 
-.nav-inner {
+.nav-bar {
+  pointer-events: auto;
   display: flex;
   align-items: center;
-  gap: var(--s-6);
-  height: 68px;
+  gap: var(--s-7);
+  padding: var(--s-3) var(--s-3) var(--s-3) var(--s-5);
+  background: rgba(20, 17, 16, 0.82);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-pill);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
 .brand {
@@ -279,14 +290,15 @@ p {
   align-items: center;
   gap: var(--s-3);
   font-family: var(--serif);
-  font-size: 1.3125rem;
+  font-size: 1.75rem;
   font-weight: 600;
   letter-spacing: -0.02em;
+  line-height: 1;
 }
 
 .brand img {
-  width: 27px;
-  height: 27px;
+  width: 44px;
+  height: 44px;
 }
 
 .brand .dot {
@@ -296,7 +308,6 @@ p {
 .nav-links {
   display: flex;
   gap: var(--s-6);
-  margin-left: auto;
   font-size: 0.875rem;
   color: var(--muted);
 }
@@ -310,6 +321,77 @@ p {
 
 .nav-toggle {
   display: none;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-toggle-lines {
+  position: relative;
+  width: 18px;
+  height: 12px;
+}
+.nav-toggle-lines span {
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform var(--t-layout) var(--ease),
+    opacity var(--t-color) var(--ease);
+}
+.nav-toggle-lines span:first-child {
+  top: 0;
+}
+.nav-toggle-lines span:last-child {
+  bottom: 0;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-lines span:first-child {
+  transform: translateY(5px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-lines span:last-child {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--s-5);
+  padding: var(--s-10) var(--s-7);
+  background: rgba(20, 17, 16, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--t-layout) var(--ease),
+    visibility var(--t-layout) var(--ease);
+}
+.mobile-menu[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+}
+.mobile-menu a {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: transform var(--t-layout) var(--ease),
+    opacity var(--t-layout) var(--ease);
+}
+.mobile-menu[data-open="true"] a {
+  opacity: 1;
+  transform: none;
 }
 
 /* -------------------------------------------------------------- button */
@@ -378,7 +460,7 @@ p {
 /* ---------------------------------------------------------------- hero */
 
 .hero {
-  padding: var(--s-8) 0 var(--s-9);
+  padding: 132px 0 var(--s-9);
 }
 
 .hero-grid {
@@ -475,10 +557,10 @@ p {
   position: relative;
   width: 288px;
   padding: 7px;
-  background: var(--ink);
+  background: #0b0908;
+  border: 1px solid #2c2522;
   border-radius: 34px;
-  box-shadow: 0 22px 46px rgba(28, 22, 20, 0.24),
-    0 2px 0 rgba(28, 22, 20, 0.1);
+  box-shadow: 0 26px 50px rgba(0, 0, 0, 0.55);
 }
 
 .board-phone img {
@@ -1024,11 +1106,11 @@ p {
 
 .polaroid {
   margin: 0;
-  background: var(--surface);
-  border: 1px solid var(--hair);
+  background: var(--print);
+  border: 1px solid var(--print-hair);
   border-radius: var(--r-media);
   padding: var(--s-3) var(--s-3) var(--s-4);
-  box-shadow: 0 8px 18px rgba(28, 22, 20, 0.08);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.38);
   transform: rotate(var(--tilt, -0.6deg));
   transition: transform var(--t-layout) var(--ease),
     box-shadow var(--t-layout) var(--ease);
@@ -1050,13 +1132,13 @@ p {
   font-family: var(--mono);
   font-size: 0.625rem;
   letter-spacing: 0.06em;
-  color: var(--muted);
+  color: var(--print-muted);
   padding-top: var(--s-3);
   text-transform: uppercase;
 }
 
 .polaroid figcaption .t {
-  color: var(--ink);
+  color: var(--print-ink);
   text-transform: none;
   letter-spacing: 0;
   font-family: var(--sans);
@@ -1277,4 +1359,359 @@ p {
   .polaroid:hover {
     transform: rotate(var(--tilt, -0.6deg));
   }
+}
+
+/* ------------------------------------------------------- the step walker */
+
+.walker {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: var(--s-8);
+  align-items: start;
+}
+
+.walker-stage {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.stepcard {
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-sheet);
+  padding: var(--s-5);
+  display: grid;
+  gap: var(--s-4);
+  transition: opacity var(--t-layout) var(--ease),
+    transform var(--t-layout) var(--ease);
+}
+
+.stepcard:focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 3px;
+}
+
+.stepcard-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+
+.stepcard-head .label {
+  color: var(--crimson);
+}
+
+.stepcard-art {
+  border-radius: var(--r-card);
+  background: #17120f;
+  border: 1px solid #2a2320;
+  display: grid;
+  place-items: center;
+  padding: var(--s-6) var(--s-5);
+}
+
+.stepcard-art svg {
+  width: 176px;
+  height: 176px;
+}
+
+.stepcard-text {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  line-height: 1.26;
+  letter-spacing: -0.012em;
+  min-height: 3.8em;
+}
+
+.stepcard-foot {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  border-top: 1px solid var(--hair);
+  padding-top: var(--s-3);
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.stepcard-foot img {
+  width: 18px;
+  height: 18px;
+}
+
+.rail {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.rail button {
+  width: 27px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid var(--hair);
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  cursor: pointer;
+  transition: background var(--t-color) var(--ease),
+    color var(--t-color) var(--ease), border-color var(--t-color) var(--ease);
+}
+
+.rail button:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.rail button[aria-current="true"] {
+  background: var(--crimson);
+  border-color: var(--crimson);
+  color: var(--on-crimson);
+}
+
+.walker-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+
+.arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--r-chip);
+  border: 1px solid var(--hair);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  transition: background var(--t-color) var(--ease),
+    border-color var(--t-color) var(--ease);
+}
+
+.arrow:hover {
+  background: var(--sunken);
+  border-color: var(--ink);
+}
+
+.arrow[disabled] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* the sheet that a shared step becomes */
+
+.sharecard {
+  display: none;
+  width: 228px;
+  aspect-ratio: 9 / 16;
+  background: var(--print);
+  color: var(--print-ink);
+  border-radius: 12px;
+  padding: var(--s-4);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55);
+  grid-template-rows: auto auto 1fr auto;
+  gap: var(--s-3);
+}
+
+.sharecard[data-open="true"] {
+  display: grid;
+  animation: sheet-in var(--t-layout) var(--ease);
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) rotate(-2deg) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-1.2deg) scale(1);
+  }
+}
+
+.sharecard .sc-head {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--print-muted);
+}
+
+.sharecard .sc-head img {
+  width: 16px;
+  height: 16px;
+}
+
+.sharecard .sc-num {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #c8372b;
+  text-transform: uppercase;
+}
+
+.sharecard .sc-art {
+  display: grid;
+  place-items: center;
+  background: #f7f3eb;
+  border-radius: 8px;
+  padding: var(--s-3);
+}
+
+.sharecard .sc-art svg {
+  width: 86px;
+  height: 86px;
+}
+
+.sharecard .sc-text {
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.sharecard .sc-foot {
+  font-family: var(--mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.08em;
+  color: var(--print-muted);
+  border-top: 1px solid var(--print-hair);
+  padding-top: var(--s-2);
+}
+
+.share-panel {
+  display: grid;
+  gap: var(--s-3);
+  justify-items: start;
+}
+
+.share-panel[data-open="true"] .stepcard {
+  opacity: 0.4;
+  transform: scale(0.985);
+}
+
+/* --------------------------------------------------------- mobile rules */
+
+@media (max-width: 980px) {
+  .walker {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sharecard {
+    width: 200px;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding-top: 108px;
+  }
+  .nav-bar {
+    gap: var(--s-4);
+    padding: var(--s-2) var(--s-2) var(--s-2) var(--s-4);
+  }
+  .brand {
+    font-size: 1.375rem;
+  }
+  .brand img {
+    width: 34px;
+    height: 34px;
+  }
+  .nav-links {
+    display: none;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+  .stepcard-text {
+    font-size: 1.25rem;
+  }
+  .stepcard-art svg {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* the deck: the next steps sit under the one you are reading */
+
+.deck {
+  position: relative;
+  padding-bottom: var(--s-6);
+}
+
+.deck-ghost {
+  position: absolute;
+  inset: 0 0 var(--s-6) 0;
+  border-radius: var(--r-sheet);
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  transform: translateY(calc(var(--i, 1) * 13px)) scale(calc(0.975 - var(--i, 1) * 0.015));
+  opacity: calc(0.9 - var(--i, 1) * 0.4);
+  transition: transform var(--t-layout) var(--ease),
+    opacity var(--t-layout) var(--ease);
+}
+
+.deck-ghost:nth-of-type(1) {
+  --i: 1;
+}
+.deck-ghost:nth-of-type(2) {
+  --i: 2;
+}
+
+.deck .stepcard {
+  position: relative;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.deck .stepcard.is-dragging {
+  cursor: grabbing;
+  transition: none;
+}
+
+.stepchip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-crimson);
+  background: var(--crimson);
+  border-radius: var(--r-pill);
+  padding: 3px 9px;
+}
+
+.stepchip b {
+  font-weight: 600;
+}
+.stepchip i {
+  font-style: normal;
+  opacity: 0.75;
+}
+
+.stepcard-art svg {
+  transition: opacity var(--t-color) var(--ease);
+}
+
+.share-panel {
+  margin-top: var(--s-6);
+  display: grid;
+  gap: var(--s-4);
+  justify-items: start;
+}
+
+.share-panel[data-open="true"] #share-hint {
+  color: var(--crimson);
 }

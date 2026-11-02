@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "bfda5390-9f51-4f03-bb82-cddd03b15711",
-  "currentRevision": "75b889fb-bc9a-4abf-a3ac-35dfc9d24e82",
+  "currentRevision": "2f31a241-9261-46e2-82f0-f0e53bd8a924",
   "pendingChanges": false,
   "files": {
     "AGENTS.md": {
@@ -129,12 +129,12 @@
       "content": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/77/77ab04c8a70c369fe9790c4d7f0a934f32ff23a97b0379e6979d262f0df556b9"
     },
     "compositions/ask.html": {
-      "hash": "a13bad5180bc58e0746b26859da63223c1c98726b13473179dbce8c4a33066a0",
-      "content": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/a1/a13bad5180bc58e0746b26859da63223c1c98726b13473179dbce8c4a33066a0"
+      "hash": "dbe0aaaa856329e17c26ee3d75e900ecfc1b04be65f8b9c2a1378a21c6f5b338",
+      "content": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/db/dbe0aaaa856329e17c26ee3d75e900ecfc1b04be65f8b9c2a1378a21c6f5b338"
     },
     "compositions/cook.html": {
-      "hash": "bcda643125224114854b1a518f150dbcf53f8f8886a219a1fe8639c905b813be",
-      "content": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/bc/bcda643125224114854b1a518f150dbcf53f8f8886a219a1fe8639c905b813be"
+      "hash": "01b94bf5eb5b217506c5d6d77322a3a0089f8db709696affcde0ebb0c2b7b193",
+      "content": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/01/01b94bf5eb5b217506c5d6d77322a3a0089f8db709696affcde0ebb0c2b7b193"
     },
     "compositions/fridge.html": {
       "hash": "0cb8d3cd8cfd5cfaf14ee58dab047573536ddb1af389193db0306d9c7f18c8cc",
@@ -181,8 +181,8 @@
       "content": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/63/634a7218d2865d3b1980c4282a570aa552daec7a813152d7996986bed338fc63"
     },
     "out/shoku-reel.mp4": {
-      "hash": "4b20f9cb4375798269046f7446278881f771252a990131f3a6fd94ada37ebb8a",
-      "content": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/4b/4b20f9cb4375798269046f7446278881f771252a990131f3a6fd94ada37ebb8a"
+      "hash": "e4ac51f39bb8a1799b7ca0b38867cf94dbfd4e2bd87afd7468cab8d5face7364",
+      "content": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/e4/e4ac51f39bb8a1799b7ca0b38867cf94dbfd4e2bd87afd7468cab8d5face7364"
     }
   },
   "revisions": {
@@ -469,6 +469,29 @@
         "index.html": {
           "before": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/e3/e34a8614b3c3767503456d1f5727a8a9f9ea419f32e7183b8371bc5cfa0fc3c0",
           "after": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/8c/8c1d2c4879644c3263311fb4656f80298b14394c823f8548a1f910b14d094e87"
+        }
+      }
+    },
+    "2f31a241-9261-46e2-82f0-f0e53bd8a924": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793642115835,
+      "endedAt": 1793642115844,
+      "files": {
+        "compositions/ask.html": {
+          "before": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/a1/a13bad5180bc58e0746b26859da63223c1c98726b13473179dbce8c4a33066a0",
+          "after": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/db/dbe0aaaa856329e17c26ee3d75e900ecfc1b04be65f8b9c2a1378a21c6f5b338"
+        },
+        "compositions/cook.html": {
+          "before": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/bc/bcda643125224114854b1a518f150dbcf53f8f8886a219a1fe8639c905b813be",
+          "after": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/01/01b94bf5eb5b217506c5d6d77322a3a0089f8db709696affcde0ebb0c2b7b193"
+        },
+        "out/shoku-reel.mp4": {
+          "before": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/4b/4b20f9cb4375798269046f7446278881f771252a990131f3a6fd94ada37ebb8a",
+          "after": "/home/hawkaii/.cache/hyperframes/history/bfda5390-9f51-4f03-bb82-cddd03b15711/blobs/e4/e4ac51f39bb8a1799b7ca0b38867cf94dbfd4e2bd87afd7468cab8d5face7364"
         }
       }
     }
@@ -1471,15 +1494,15 @@
   },
   "renders": {
     "latest": {
-      "id": "517b6b5b-d287-4901-a21d-5bc87af27e9e",
-      "completedAt": 1793641668700,
+      "id": "83d3e77c-965a-437d-b029-812bb76e8256",
+      "completedAt": 1793642149322,
       "output": "/home/hawkaii/code/projects/shoku-landing/video/out/shoku-reel-raw.mp4",
       "status": "completed",
-      "revision": "5e432cf2-d3ba-4e51-8c32-197aab5759c1"
+      "revision": "2f31a241-9261-46e2-82f0-f0e53bd8a924"
     },
     "retainedRevisions": [
-      "5e432cf2-d3ba-4e51-8c32-197aab5759c1",
-      "76b33c56-4ed3-440e-a450-4aa713c3bccf"
+      "2f31a241-9261-46e2-82f0-f0e53bd8a924",
+      "75b889fb-bc9a-4abf-a3ac-35dfc9d24e82"
     ]
   },
   "pendingArtifactCleanup": []

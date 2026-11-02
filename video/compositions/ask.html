@@ -153,18 +153,18 @@
     <div id="glow" class="clip" data-layout-allow-overflow data-start="0" data-duration="5.5" data-track-index="1"></div>
     <p id="ask-label" class="clip" data-start="0.02" data-duration="5.61" data-track-index="2">03 · at the stove</p>
 
-    <div id="q-bubble" class="clip" data-start="0.44" data-duration="5.39" data-track-index="3">
+    <div id="q-bubble" class="clip" data-start="0.10" data-duration="5.39" data-track-index="3">
       <span>can i skip the cream?</span>
     </div>
-    <p id="q-who" class="clip" data-start="0.9" data-duration="4.93" data-track-index="3">you · palak paneer · v1</p>
+    <p id="q-who" class="clip" data-start="0.58" data-duration="4.93" data-track-index="3">you · palak paneer · v1</p>
 
-    <div id="think" class="clip" data-start="0.96" data-duration="4.87" data-track-index="4">
+    <div id="think" class="clip" data-start="0.68" data-duration="4.87" data-track-index="4">
       <i></i><i></i><i></i>
     </div>
 
-    <p id="answer" class="clip" data-start="1.6" data-duration="4.23" data-track-index="5"><span class="w">Yes,</span> <span class="w">in</span> <span class="w">step</span> <span class="w">6</span> <span class="w">and</span> <span class="w">step</span> <span class="w">10.</span> <span class="w">Simmer</span> <span class="w">1–2</span> <span class="w">minutes</span> <span class="w">less</span> <span class="w">so</span> <span class="w">it</span> <span class="w">stays</span> <span class="w">thick.</span></p>
+    <p id="answer" class="clip" data-start="1.35" data-duration="4.23" data-track-index="5"><span class="w">Yes,</span> <span class="w">in</span> <span class="w">step</span> <span class="w">6</span> <span class="w">and</span> <span class="w">step</span> <span class="w">10.</span> <span class="w">Simmer</span> <span class="w">1–2</span> <span class="w">minutes</span> <span class="w">less</span> <span class="w">so</span> <span class="w">it</span> <span class="w">stays</span> <span class="w">thick.</span></p>
 
-    <div id="applied" class="clip" data-start="4.0" data-duration="1.83" data-track-index="6"><b>✓</b> applied · v2</div>
+    <div id="applied" class="clip" data-start="3.35" data-duration="1.83" data-track-index="6"><b>✓</b> applied · v2</div>
   </div>
 
   <script>
@@ -186,26 +186,26 @@
       "#q-bubble",
       { opacity: 0, y: 26, scale: 0.96 },
       { opacity: 1, y: 0, scale: 1, duration: 0.38, ease: "power3.out" },
-      0.44,
+      0.10,
     );
-    tl.fromTo("#q-bubble span", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.62, ease: "steps(18)" }, 0.52);
+    tl.fromTo("#q-bubble span", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.62, ease: "steps(18)" }, 0.16);
 
-    tl.fromTo("#q-who", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.95);
+    tl.fromTo("#q-who", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.60);
 
-    tl.fromTo("#think", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, 0.98);
-    tl.to("#think i", { opacity: 0.25, duration: 0.3, stagger: 0.14, yoyo: true, repeat: 1, ease: "sine.inOut" }, 1.12);
-    tl.to("#think", { opacity: 0, y: -10, duration: 0.2, ease: "power2.in" }, 1.44);
+    tl.fromTo("#think", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, 0.70);
+    tl.to("#think i", { opacity: 0.25, duration: 0.3, stagger: 0.14, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.82);
+    tl.to("#think", { opacity: 0, y: -10, duration: 0.2, ease: "power2.in" }, 1.15);
 
     // the answer arrives, word by word
     const words = document.querySelectorAll("#answer .w");
     
-    tl.to(words, { opacity: 1, duration: 0.18, stagger: 0.034, ease: "none" }, 1.62);
+    tl.to(words, { opacity: 1, duration: 0.18, stagger: 0.034, ease: "none" }, 1.35);
 
     tl.fromTo(
       "#applied",
       { opacity: 0, scale: 0.9 },
       { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(2)" },
-      3.5,
+      3.35,
     );
 
     window.__timelines["ask"] = tl;

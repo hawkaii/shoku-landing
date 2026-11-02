@@ -86,7 +86,7 @@
           <a href="#assistant"><span class="n">03</span> Assistant <span class="what">ask, edit, suggest, capture</span></a>
           <a href="#fridge"><span class="n">04</span> Fridge <span class="what">what you already have</span></a>
           <a href="#cook"><span class="n">05</span> The cook <span class="what">the dish, actually made</span></a>
-          <a href="#wall"><span class="n">06</span> The Wall <span class="what">twenty one reels, read</span></a>
+          <a href="#wall"><span class="n">06</span> From the feed <span class="what">reels become pages</span></a>
           <a href="#questions"><span class="n">07</span> Questions <span class="what">the honest answers</span></a>
         </nav>
       </div>
@@ -129,13 +129,13 @@
         </div>
       </div>
 
-      <figure class="board reveal" data-board="wall">
+      <figure class="board reveal" data-board="share">
         <div class="board-phone">
-          <img src="assets/shots/wall.jpg" width="585" height="640" alt="The Wall in Shoku: a feed of reels with their real thumbnails, step counts and tags, each with an add to cookbook button." loading="lazy">
-          <svg class="marks" viewBox="0 0 390 427" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <img src="assets/shots/share-sheet.jpg" width="720" height="1600" alt="The Android share sheet open over an Instagram reel, with Shoku listed between Slack and Add to chat." loading="lazy">
+          <svg class="marks" viewBox="0 0 720 1600" preserveAspectRatio="none" aria-hidden="true"></svg>
         </div>
         <ol class="board-notes">
-          <li><button class="board-note" data-mark="1" type="button"><span class="n">1</span><span>A card per reel somebody imported. The thumbnail is the reel, and the tags and step count were read from it, not typed.</span></button></li>
+          <li><button class="board-note" data-mark="1" type="button"><span class="n">1</span><span>Shoku sits in the share sheet with everything else. One tap, and the reel is on its way.</span></button></li>
         </ol>
       </figure>
     </div>
@@ -414,37 +414,45 @@
   </section>
 
   <!-- 06 · the wall ------------------------------------------------------- -->
+  <!-- 06 · from the feed ------------------------------------------------ -->
   <section class="section" id="wall">
     <div class="wrap">
       <div class="section-head">
-        <p class="label label-crimson">06 · The Wall</p>
-        <h2 class="h2">Twenty one reels, already read.</h2>
-        <p class="body">The Wall is the shared side of the app: every imported reel, with its thumbnail, its creator and the steps that were read out of it. The matcher draws from it whenever you ask what to cook.</p>
+        <p class="label label-crimson">06 · From the feed</p>
+        <h2 class="h2">Saved on Instagram. Read in Shoku.</h2>
+        <p class="body">Share a reel and it comes back as a page in your cookbook: the steps in order, the ingredients attached, the thumbnail kept so you can watch it again. Nothing is retyped, and nothing is lost in a saves folder.</p>
       </div>
-      <div class="polaroids polaroids--wall">
-        <figure class="polaroid" style="--tilt:-0.8deg">
-          <img src="assets/reels/DSSIlPADyxr.jpg" width="640" height="1138" alt="Palak paneer in a pan." loading="lazy">
-          <figcaption><span class="t">Palak Paneer</span>Richa Gupta · 11 steps</figcaption>
-        </figure>
-        <figure class="polaroid" style="--tilt:0.6deg">
-          <img src="assets/reels/DcbJ2KBzz8u.jpg" width="640" height="1137" alt="Egg ghee roast in a bowl." loading="lazy">
-          <figcaption><span class="t">Egg Ghee Roast</span>Ralston D’Souza · 19 steps</figcaption>
-        </figure>
-        <figure class="polaroid" style="--tilt:-0.4deg">
-          <img src="assets/reels/Dd9pc1AyUC4.jpg" width="640" height="1138" alt="Hot honey garlic chicken bread." loading="lazy">
-          <figcaption><span class="t">Hot Honey Garlic Chicken Bread</span>Iram Mansoor · 24 steps</figcaption>
-        </figure>
-        <figure class="polaroid" style="--tilt:0.9deg">
-          <img src="assets/reels/DezCNozzevL.jpg" width="640" height="1136" alt="Nepali style aloo chukauni." loading="lazy">
-          <figcaption><span class="t">Nepali Style Aloo Chukauni</span>Ralston D’Souza · 11 steps</figcaption>
-        </figure>
-        <figure class="polaroid" style="--tilt:-0.7deg">
-          <img src="assets/reels/DbWQLfUBwdu.jpg" width="640" height="1138" alt="Chili crisp eggs on a plate." loading="lazy">
-          <figcaption><span class="t">Chili Crisp Eggs</span>Braydon Jackson Morgan · 8 steps</figcaption>
-        </figure>
-        <figure class="polaroid" style="--tilt:0.4deg">
-          <img src="assets/reels/DdXytYoT6q7.jpg" width="640" height="1137" alt="Egg paratha cut open on a pan." loading="lazy">
-          <figcaption><span class="t">Egg Paratha</span>Ralston D’Souza · 8 steps</figcaption>
+
+      <div class="transfer reveal" id="transfer">
+        <div class="transfer-reels">
+          <figure class="reelcard" style="--i:0">
+            <img src="assets/reels/DcpcVnJTzC3.jpg" width="640" height="1138" alt="A reel of spicy boiled eggs." loading="lazy">
+            <figcaption><span class="t">Spicy Boiled Egg</span>5 steps · read</figcaption>
+          </figure>
+          <figure class="reelcard" style="--i:1">
+            <img src="assets/reels/DdXytYoT6q7.jpg" width="640" height="1137" alt="A reel of egg paratha." loading="lazy">
+            <figcaption><span class="t">Egg Paratha</span>8 steps · read</figcaption>
+          </figure>
+          <figure class="reelcard" style="--i:2">
+            <img src="assets/reels/DbWQLfUBwdu.jpg" width="640" height="1138" alt="A reel of chili crisp eggs." loading="lazy">
+            <figcaption><span class="t">Chili Crisp Eggs</span>8 steps · read</figcaption>
+          </figure>
+        </div>
+
+        <div class="transfer-arrow" aria-hidden="true">
+          <svg viewBox="0 0 190 60">
+            <path class="arrow-line" d="M6 30c34-12 68 12 102 0 14-5 26-6 44-2"/>
+            <path class="arrow-head" d="M142 20l10 8-11 7"/>
+          </svg>
+          <span class="tiny">share, or paste a link</span>
+        </div>
+
+        <figure class="board" data-board="plain">
+          <div class="board-phone" style="width: 248px">
+            <img src="assets/shots/dish.jpg" width="585" height="1266" alt="The palak paneer page that came back: cover photo, ingredients, steps and the fridge count." loading="lazy">
+            <svg class="marks" viewBox="0 0 390 844" preserveAspectRatio="none" aria-hidden="true"></svg>
+          </div>
+          <p class="caption" style="text-align:center">in your cookbook, with its cover</p>
         </figure>
       </div>
     </div>

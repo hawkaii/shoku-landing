@@ -1724,3 +1724,159 @@ p {
   width: 38px;
   height: 38px;
 }
+
+/* ------------------------------------------------- real photos in the deck */
+
+.stepcard-art {
+  position: relative;
+}
+
+.stepcard-art img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.art-tag {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  font-family: var(--mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(20, 17, 16, 0.78);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-pill);
+  padding: 3px 8px;
+}
+
+.sc-art img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* ------------------------------------------------ reel to page, the move */
+
+.transfer {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) 176px minmax(0, 0.92fr);
+  gap: var(--s-6);
+  align-items: center;
+  margin-top: var(--s-2);
+}
+
+.transfer-reels {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: var(--s-4);
+}
+
+.reelcard {
+  margin: 0;
+  width: 148px;
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-card);
+  padding: var(--s-2) var(--s-2) var(--s-3);
+  transform: translateY(calc(var(--i) * 12px)) rotate(calc((var(--i) - 1) * 1.6deg));
+  transition: transform 700ms var(--ease);
+}
+
+.transfer.in .reelcard {
+  transform: translateY(calc(var(--i) * 6px)) rotate(calc((var(--i) - 1) * 0.8deg));
+}
+
+.reelcard img {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.reelcard figcaption {
+  font-family: var(--mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  padding-top: var(--s-2);
+}
+
+.reelcard figcaption .t {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.transfer-arrow {
+  display: grid;
+  gap: var(--s-2);
+  justify-items: center;
+  text-align: center;
+}
+
+.transfer-arrow svg {
+  width: 100%;
+  max-width: 176px;
+  fill: none;
+  stroke: var(--crimson);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.arrow-line,
+.arrow-head {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  transition: stroke-dashoffset 900ms var(--ease) 240ms;
+}
+
+.transfer.in .arrow-line,
+.transfer.in .arrow-head {
+  stroke-dashoffset: 0;
+}
+
+@media (max-width: 980px) {
+  .transfer {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: var(--s-5);
+  }
+  .transfer-reels {
+    justify-content: center;
+    width: 100%;
+  }
+  .reelcard {
+    width: 30%;
+    max-width: 150px;
+  }
+  .transfer-arrow svg {
+    transform: rotate(90deg);
+    width: 64px;
+  }
+  .transfer-arrow .tiny {
+    margin-top: var(--s-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow-line,
+  .arrow-head {
+    stroke-dashoffset: 0;
+  }
+  .reelcard,
+  .transfer.in .reelcard {
+    transform: none;
+  }
+}

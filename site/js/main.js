@@ -23,9 +23,10 @@ const BOARDS = {
       { n: 2, box: [16, 290, 358, 66] },
     ],
   },
-  wall: {
-    h: 427,
-    marks: [{ n: 1, box: [14, 60, 362, 132] }],
+  share: {
+    w: 720,
+    h: 1600,
+    marks: [{ n: 1, box: [148, 1206, 112, 148] }],
   },
   cook: {
     h: 467,
@@ -99,15 +100,16 @@ function drawBoard(figure) {
   const svg = figure.querySelector('.marks');
   if (!board || !svg) return;
 
+  const vbWidth = board.w || 390;
   const { h: vbHeight, marks } = board;
-  svg.setAttribute('viewBox', `0 0 390 ${vbHeight}`);
+  svg.setAttribute('viewBox', `0 0 ${vbWidth} ${vbHeight}`);
 
   const maskId = `cut-${figure.dataset.board}`;
   const defs = document.createElementNS(SVG_NS, 'defs');
   const mask = document.createElementNS(SVG_NS, 'mask');
   mask.setAttribute('id', maskId);
   const white = document.createElementNS(SVG_NS, 'rect');
-  white.setAttribute('width', '390');
+  white.setAttribute('width', String(vbWidth));
   white.setAttribute('height', String(vbHeight));
   white.setAttribute('fill', 'white');
   mask.append(white);
@@ -127,7 +129,7 @@ function drawBoard(figure) {
   svg.append(defs);
 
   const scrim = document.createElementNS(SVG_NS, 'rect');
-  scrim.setAttribute('width', '390');
+  scrim.setAttribute('width', String(vbWidth));
   scrim.setAttribute('height', String(vbHeight));
   scrim.setAttribute('class', 'scrim');
   scrim.setAttribute('mask', `url(#${maskId})`);
@@ -292,6 +294,14 @@ if (reduceMotion || !('IntersectionObserver' in window)) {
 
 /* ---------------------------------------------------------- step walker */
 
+/* The frames from the cook itself, by step number (1 based). */
+const STEP_PHOTOS = {
+  1: "assets/cooks/spinach.jpg",
+  4: "assets/cooks/puree.jpg",
+  8: "assets/cooks/pan.jpg",
+  11: "assets/cooks/plate.jpg",
+};
+
 const WALK_STEPS = [
   'Wash the palak thoroughly under running water and drain.',
   'Heat ghee in a pan and add chopped garlic, green chilli and sliced onion.',
@@ -391,12 +401,17 @@ if (walk.card && walk.rail) {
   function paint(animate) {
     const text = WALK_STEPS[index];
     const motion = motionFor(text);
+    const photo = STEP_PHOTOS[index + 1];
 
     walk.num.textContent = pad(index);
-    walk.art.innerHTML = diagram(motion, DARK_INK);
+    walk.art.innerHTML = photo
+      ? `<img src="${photo}" alt="The dish at this step, photographed while cooking."><span class="art-tag">your photo · 2 nov</span>`
+      : `${diagram(motion, DARK_INK)}<span class="art-tag">drawn from the words</span>`;
     walk.text.textContent = text;
     walk.scNum.textContent = `Step ${pad(index)} of ${WALK_STEPS.length}`;
-    walk.scArt.innerHTML = diagram(motion, LIGHT_INK);
+    walk.scArt.innerHTML = photo
+      ? `<img src="${photo}" alt="">`
+      : diagram(motion, LIGHT_INK);
     walk.scText.textContent = text;
 
     Array.from(walk.rail.children).forEach((b, i) => {

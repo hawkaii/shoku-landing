@@ -1,0 +1,213 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Fraunces";
+      src: url("assets/fonts/fraunces.woff2") format("woff2");
+      font-weight: 400 700;
+      font-style: normal;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Karla";
+      src: url("assets/fonts/karla.woff2") format("woff2");
+      font-weight: 300 800;
+      font-style: normal;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Mono";
+      src: url("assets/fonts/mono.woff2") format("woff2");
+      font-weight: 400 700;
+      font-style: normal;
+      font-display: block;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #141110;
+      overflow: hidden;
+    }
+    #glow {
+      position: absolute;
+      right: -240px;
+      top: 120px;
+      width: 760px;
+      height: 760px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200, 55, 43, 0.2) 0%, rgba(200, 55, 43, 0) 68%);
+    }
+    #ask-label {
+      position: absolute;
+      left: 72px;
+      top: 300px;
+      font-family: "Mono", monospace;
+      font-size: 30px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #c8372b;
+      opacity: 0;
+    }
+    #q-bubble {
+      position: absolute;
+      left: 372px;
+      top: 396px;
+      width: 636px;
+      padding: 30px 34px;
+      border-radius: 34px 34px 8px 34px;
+      background: #241f1d;
+      border: 1px solid #3a312c;
+      font-family: "Karla", sans-serif;
+      font-size: 48px;
+      line-height: 1.24;
+      color: #f5efe6;
+      opacity: 0;
+    }
+    #q-bubble span {
+      display: inline-block;
+      clip-path: inset(0 100% 0 0);
+    }
+    #q-who {
+      position: absolute;
+      left: 372px;
+      top: 552px;
+      width: 636px;
+      text-align: right;
+      font-family: "Mono", monospace;
+      font-size: 28px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #a79c93;
+      opacity: 0;
+    }
+    #think {
+      position: absolute;
+      left: 86px;
+      top: 636px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 26px 32px;
+      border: 1px solid #3a312c;
+      border-radius: 999px;
+      background: #1e1a18;
+      opacity: 0;
+    }
+    #think i {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #c8372b;
+      display: block;
+    }
+    #answer {
+      position: absolute;
+      left: 86px;
+      top: 760px;
+      width: 908px;
+      font-family: "Karla", sans-serif;
+      font-size: 50px;
+      line-height: 1.42;
+      letter-spacing: -0.004em;
+      color: #f5efe6;
+    }
+    #answer .w {
+      display: inline-block;
+      opacity: 0;
+    }
+    #applied {
+      position: absolute;
+      left: 86px;
+      top: 1128px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(200, 55, 43, 0.55);
+      background: rgba(200, 55, 43, 0.12);
+      font-family: "Mono", monospace;
+      font-size: 28px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f5efe6;
+      opacity: 0;
+    }
+    #applied b {
+      color: #c8372b;
+      font-size: 34px;
+      line-height: 1;
+    }
+    #ask-foot {
+      position: absolute;
+      left: 86px;
+      top: 1254px;
+      font-family: "Mono", monospace;
+      font-size: 28px;
+      letter-spacing: 0.04em;
+      color: #a79c93;
+      opacity: 0;
+    }
+  </style>
+
+  <div id="root" data-composition-id="ask" data-width="1080" data-height="1920">
+    <div id="glow" class="clip" data-layout-allow-overflow data-start="0" data-duration="5.5" data-track-index="1"></div>
+    <p id="ask-label" class="clip" data-start="0.02" data-duration="5.61" data-track-index="2">03 · at the stove</p>
+
+    <div id="q-bubble" class="clip" data-start="0.44" data-duration="5.39" data-track-index="3">
+      <span>can i skip the cream?</span>
+    </div>
+    <p id="q-who" class="clip" data-start="0.9" data-duration="4.93" data-track-index="3">you · palak paneer · v1</p>
+
+    <div id="think" class="clip" data-start="0.96" data-duration="4.87" data-track-index="4">
+      <i></i><i></i><i></i>
+    </div>
+
+    <p id="answer" class="clip" data-start="1.6" data-duration="4.23" data-track-index="5"><span class="w">Yes,</span> <span class="w">in</span> <span class="w">step</span> <span class="w">6</span> <span class="w">and</span> <span class="w">step</span> <span class="w">10.</span> <span class="w">Simmer</span> <span class="w">1–2</span> <span class="w">minutes</span> <span class="w">less</span> <span class="w">so</span> <span class="w">it</span> <span class="w">stays</span> <span class="w">thick.</span></p>
+
+    <div id="applied" class="clip" data-start="4.0" data-duration="1.83" data-track-index="6"><b>✓</b> applied · v2</div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // the cut is a crossfade: this scene rises over the one before it
+    tl.fromTo("#root", { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "none" }, 0);
+
+    tl.fromTo("#glow", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 2.2, ease: "power1.out" }, 0);
+
+    tl.fromTo(
+      "#ask-label",
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+      0.02,
+    );
+
+    tl.fromTo(
+      "#q-bubble",
+      { opacity: 0, y: 26, scale: 0.96 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.38, ease: "power3.out" },
+      0.44,
+    );
+    tl.fromTo("#q-bubble span", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.62, ease: "steps(18)" }, 0.52);
+
+    tl.fromTo("#q-who", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.95);
+
+    tl.fromTo("#think", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, 0.98);
+    tl.to("#think i", { opacity: 0.25, duration: 0.3, stagger: 0.14, yoyo: true, repeat: 1, ease: "sine.inOut" }, 1.12);
+    tl.to("#think", { opacity: 0, y: -10, duration: 0.2, ease: "power2.in" }, 1.44);
+
+    // the answer arrives, word by word
+    const words = document.querySelectorAll("#answer .w");
+    
+    tl.to(words, { opacity: 1, duration: 0.18, stagger: 0.034, ease: "none" }, 1.62);
+
+    tl.fromTo(
+      "#applied",
+      { opacity: 0, scale: 0.9 },
+      { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(2)" },
+      3.5,
+    );
+
+    window.__timelines["ask"] = tl;
+  </script>
+</template>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #141110;
+        --surface: #1e1a18;
+        --hair: #332b27;
+        --ink: #f5efe6;
+        --muted: #a79c93;
+        --crimson: #c8372b;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: var(--ground);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="23"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- 01 · the reel ------------------------------------------------->
+      <div
+        id="hook"
+        data-composition-id="hook"
+        data-composition-src="compositions/hook.html"
+        data-start="0.0"
+        data-duration="3.2"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+        style="z-index: 1"
+      ></div>
+
+      <!-- 02 · the page ------------------------------------------------->
+      <div
+        id="page"
+        data-composition-id="page"
+        data-composition-src="compositions/page.html"
+        data-start="2.88"
+        data-duration="4.42"
+        data-track-index="2"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+        style="z-index: 2"
+      ></div>
+
+      <!-- 03 · at the stove --------------------------------------------->
+      <div
+        id="ask"
+        data-composition-id="ask"
+        data-composition-src="compositions/ask.html"
+        data-start="7.1"
+        data-duration="5.85"
+        data-track-index="3"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+        style="z-index: 3"
+      ></div>
+
+      <!-- 04 · the fridge ----------------------------------------------->
+      <div
+        id="fridge"
+        data-composition-id="fridge"
+        data-composition-src="compositions/fridge.html"
+        data-start="12.74"
+        data-duration="3.8"
+        data-track-index="4"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+        style="z-index: 4"
+      ></div>
+
+      <!-- 05 · the cook ------------------------------------------------->
+      <div
+        id="cook"
+        data-composition-id="cook"
+        data-composition-src="compositions/cook.html"
+        data-start="16.16"
+        data-duration="3.85"
+        data-track-index="5"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+        style="z-index: 5"
+      ></div>
+
+      <!-- 06 · the mark ------------------------------------------------->
+      <div
+        id="outro"
+        data-composition-id="outro"
+        data-composition-src="compositions/outro.html"
+        data-start="19.61"
+        data-duration="3.39"
+        data-track-index="6"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+        style="z-index: 6"
+      ></div>
+
+      <!-- audio --------------------------------------------------------->
+      <audio
+        id="reel-audio"
+        data-start="0"
+        data-duration="2.05"
+        data-track-index="20"
+        data-volume="0.85"
+        data-fade-out="0.25"
+        src="assets/footage/reel.wav"
+      ></audio>
+      <audio
+        id="music"
+        data-start="1.4"
+        data-duration="21.4"
+        data-track-index="21"
+        data-volume="0.55"
+        data-fade-in="1.4"
+        data-fade-out="1.6"
+        src="assets/music/bed.wav"
+      ></audio>
+
+      <audio id="sfx-pin" data-start="2.28" data-duration="0.11" data-track-index="22" data-volume="0.5" src="assets/sfx/drop_001.ogg"></audio>
+      <audio id="sfx-rise" data-start="2.92" data-duration="0.60" data-track-index="23" data-volume="0.42" src="assets/sfx/card-slide-3.ogg"></audio>
+      <audio id="sfx-chip-1" data-start="4.24" data-duration="0.69" data-track-index="24" data-volume="0.55" src="assets/sfx/card-place-1.ogg"></audio>
+      <audio id="sfx-chip-2" data-start="4.64" data-duration="0.46" data-track-index="25" data-volume="0.55" src="assets/sfx/card-place-2.ogg"></audio>
+      <audio id="sfx-keys-1" data-start="7.62" data-duration="0.25" data-track-index="26" data-volume="0.35" src="assets/sfx/keypress-001.wav"></audio>
+      <audio id="sfx-keys-2" data-start="7.78" data-duration="0.25" data-track-index="27" data-volume="0.32" src="assets/sfx/keypress-007.wav"></audio>
+      <audio id="sfx-keys-3" data-start="7.94" data-duration="0.25" data-track-index="28" data-volume="0.35" src="assets/sfx/keypress-013.wav"></audio>
+      <audio id="sfx-answer" data-start="8.6" data-duration="0.11" data-track-index="29" data-volume="0.4" src="assets/sfx/drop_001.ogg"></audio>
+      <audio id="sfx-count" data-start="13.05" data-duration="0.29" data-track-index="30" data-volume="0.45" src="assets/sfx/chips-stack-1.ogg"></audio>
+      <audio id="sfx-pair" data-start="16.56" data-duration="0.72" data-track-index="31" data-volume="0.42" src="assets/sfx/card-fan-1.ogg"></audio>
+      <audio id="sfx-swap" data-start="18.11" data-duration="0.50" data-track-index="32" data-volume="0.4" src="assets/sfx/switch_004.ogg"></audio>
+      <audio id="sfx-mark" data-start="19.78" data-duration="1.48" data-track-index="33" data-volume="0.5" src="assets/sfx/impactBell_heavy_000.ogg"></audio>
+    </div>
+    <script>
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

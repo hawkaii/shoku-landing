@@ -2163,3 +2163,97 @@ p {
     animation: none;
   }
 }
+
+/* --------------------------------------------- the phone, held properly */
+
+@media (max-width: 980px) {
+  .transfer-reels {
+    justify-content: stretch;
+    gap: var(--s-3);
+    width: 100%;
+  }
+
+  .reelcard {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    max-width: none;
+    transform: none;
+  }
+
+  .transfer.in .reelcard {
+    transform: none;
+  }
+
+  .reelcard figcaption {
+    font-size: 0.5625rem;
+  }
+
+  .reelcard figcaption .t {
+    font-size: 0.6875rem;
+  }
+
+  .transfer-arrow svg {
+    display: none;
+  }
+
+  .transfer-arrow::before {
+    content: "";
+    display: block;
+    width: 1.5px;
+    height: 42px;
+    background: var(--crimson);
+    opacity: 0.85;
+  }
+
+  .transfer-arrow::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top-color: var(--crimson);
+    margin-top: -1px;
+  }
+
+  .transfer-arrow .tiny {
+    margin-top: var(--s-3);
+  }
+}
+
+@media (max-width: 720px) {
+  .photo-card img {
+    aspect-ratio: 4 / 5;
+    object-position: center 42%;
+  }
+}
+
+/* ------------------------------------------- the bar, on a phone's width */
+
+@media (max-width: 720px) {
+  .nav-bar {
+    gap: var(--s-3);
+    padding: var(--s-2) var(--s-2) var(--s-2) var(--s-3);
+    max-width: calc(100vw - 24px);
+  }
+
+  /* the hero already carries the download; the bar keeps the name and the menu */
+  .nav-bar .btn-sm {
+    display: none;
+  }
+
+  .brand {
+    font-size: 1.25rem;
+    letter-spacing: -0.03em;
+  }
+
+  .nav-bar .brand img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav-toggle {
+    width: 36px;
+    height: 36px;
+  }
+}

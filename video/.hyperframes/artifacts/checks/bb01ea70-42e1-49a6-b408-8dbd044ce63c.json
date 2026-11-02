@@ -1,0 +1,775 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "gsap_repeated_fromto_without_baseline",
+        "severity": "warning",
+        "message": "2 tl.fromTo() calls target \"#step-name\" with no stable baseline. The last-authored fromTo \"from\" values become the element's resting state for any seek before the first tween actually runs, because GSAP applies fromTo from-values at authoring time (immediateRender), not at tween position.",
+        "selector": "#step-name",
+        "dataAttributes": {},
+        "sourceFile": "/home/hawkaii/code/projects/shoku-landing/video/compositions/cook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add `immediateRender: false` to every fromTo except the earliest-positioned one (at 0.52s), so pre-first-tween seeks keep its \"from\" values. A hiding `tl.set(..., 0)` baseline trips gsap_timeline_set_initial_hide, and a `gsap.set` authored before the fromTo calls is overwritten by them."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 4 has 4 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/hawkaii/code/projects/shoku-landing/video/compositions/hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into smaller .html files and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 5 has 4 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/hawkaii/code/projects/shoku-landing/video/compositions/page.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into smaller .html files and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      }
+    ],
+    "filesScanned": 7
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 6,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "clip_media_fit",
+        "severity": "warning",
+        "message": "Audio \"sfx-pin\" is 0.11s but its slot (data-duration) is 0.80s — the slot is shortened to the media length when rendered. Set data-duration to ~0.11s if that isn't intended.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "22",
+          "data-width": "1080",
+          "data-height": "1920"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "time": 0
+      },
+      {
+        "code": "clip_media_fit",
+        "severity": "warning",
+        "message": "Audio \"sfx-rise\" is 0.60s but its slot (data-duration) is 0.90s — the slot is shortened to the media length when rendered. Set data-duration to ~0.60s if that isn't intended.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "22",
+          "data-width": "1080",
+          "data-height": "1920"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "time": 0
+      },
+      {
+        "code": "clip_media_fit",
+        "severity": "warning",
+        "message": "Audio \"sfx-chip-2\" is 0.46s but its slot (data-duration) is 0.70s — the slot is shortened to the media length when rendered. Set data-duration to ~0.46s if that isn't intended.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "22",
+          "data-width": "1080",
+          "data-height": "1920"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "time": 0
+      },
+      {
+        "code": "clip_media_fit",
+        "severity": "warning",
+        "message": "Audio \"sfx-answer\" is 0.11s but its slot (data-duration) is 0.70s — the slot is shortened to the media length when rendered. Set data-duration to ~0.11s if that isn't intended.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "22",
+          "data-width": "1080",
+          "data-height": "1920"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "time": 0
+      },
+      {
+        "code": "clip_media_fit",
+        "severity": "warning",
+        "message": "Audio \"sfx-count\" is 0.29s but its slot (data-duration) is 0.80s — the slot is shortened to the media length when rendered. Set data-duration to ~0.29s if that isn't intended.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "22",
+          "data-width": "1080",
+          "data-height": "1920"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "time": 0
+      },
+      {
+        "code": "clip_media_fit",
+        "severity": "warning",
+        "message": "Audio \"sfx-pair\" is 0.72s but its slot (data-duration) is 0.80s — the slot is shortened to the media length when rendered. Set data-duration to ~0.72s if that isn't intended.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "22",
+          "data-width": "1080",
+          "data-height": "1920"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "time": 0
+      }
+    ]
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 0,
+    "infoCount": 3,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 13.444,
+        "selector": "#count-line",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 72,
+          "top": 676,
+          "right": 806.02,
+          "bottom": 746,
+          "width": 734.02,
+          "height": 70
+        },
+        "containerSelector": "#fridge-shot > img:nth-of-type(1)",
+        "text": "are already in your kitchen.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.22,
+        "lifetime": {
+          "start": 11.94,
+          "end": 14.95
+        },
+        "dataAttributes": {
+          "data-start": "0.44",
+          "data-duration": "3.01",
+          "data-track-index": "3"
+        },
+        "sourceFile": "compositions/fridge.html",
+        "bbox": {
+          "x": 72,
+          "y": 676,
+          "width": 734.02,
+          "height": 70
+        },
+        "firstSeen": 13.444,
+        "lastSeen": 13.444,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.444
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 3.667,
+        "selector": "#back",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -5.67,
+          "top": -10.08,
+          "right": 1085.67,
+          "bottom": 1930.08,
+          "width": 1091.34,
+          "height": 1940.16
+        },
+        "containerSelector": "#page > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 5.67,
+          "right": 5.67,
+          "top": 10.08,
+          "bottom": 10.08
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "back",
+          "data-start": "0",
+          "data-duration": "4.1",
+          "data-track-index": "1",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/page.html",
+        "bbox": {
+          "x": -5.67,
+          "y": -10.08,
+          "width": 1091.34,
+          "height": 1940.16
+        },
+        "firstSeen": 3.667,
+        "lastSeen": 6.111,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          3.667,
+          6.111
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 8.556,
+        "selector": "#glow",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 564.6,
+          "top": 124.6,
+          "right": 1315.4,
+          "bottom": 875.4,
+          "width": 750.8,
+          "height": 750.8
+        },
+        "containerSelector": "#ask > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "right": 235.4
+        },
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "4.45",
+          "data-track-index": "1"
+        },
+        "sourceFile": "compositions/ask.html",
+        "bbox": {
+          "x": 564.6,
+          "y": 124.6,
+          "width": 750.8,
+          "height": 750.8
+        },
+        "firstSeen": 8.556,
+        "lastSeen": 11,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.556,
+          11
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 13.444,
+        "selector": "#warm",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -300,
+          "top": 1180,
+          "right": 700,
+          "bottom": 2180,
+          "width": 1000,
+          "height": 1000
+        },
+        "containerSelector": "#fridge > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 300,
+          "bottom": 260
+        },
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "3.45",
+          "data-track-index": "1"
+        },
+        "sourceFile": "compositions/fridge.html",
+        "bbox": {
+          "x": -300,
+          "y": 1180,
+          "width": 1000,
+          "height": 1000
+        },
+        "firstSeen": 13.444,
+        "lastSeen": 13.444,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.444
+        ]
+      }
+    ],
+    "duration": 22,
+    "samples": [
+      1.222,
+      3.667,
+      6.111,
+      8.556,
+      11,
+      13.444,
+      15.889,
+      18.333,
+      20.778
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 4,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      1.222,
+      6.111,
+      11,
+      15.889,
+      20.778
+    ],
+    "checked": 63,
+    "passed": 63
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 11,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 2 text elements stay under it for 0.5 s or more, the smallest \"steps\" at 24 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "steps",
+        "selector": "#chip-a > div:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/page.html",
+        "bbox": {
+          "x": 61.09,
+          "y": 702.81,
+          "width": 84,
+          "height": 31
+        },
+        "time": 4.5,
+        "times": [
+          4.5,
+          5
+        ],
+        "fontPx": 24,
+        "floorPx": 28,
+        "seconds": 2.625,
+        "elements": [
+          {
+            "selector": "#chip-a > div:nth-of-type(2)",
+            "text": "steps",
+            "fontPx": 24,
+            "time": 4.5,
+            "seconds": 2.625
+          },
+          {
+            "selector": "#chip-b > div:nth-of-type(2)",
+            "text": "ingredients",
+            "fontPx": 24,
+            "time": 5,
+            "seconds": 2.125
+          }
+        ]
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and \"you · palak paneer · v1\" renders at 26 px for 3.25 s: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "you · palak paneer · v1",
+        "selector": "#q-who",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ask.html",
+        "bbox": {
+          "x": 589.39,
+          "y": 552,
+          "width": 418.61,
+          "height": 35
+        },
+        "time": 8.25,
+        "times": [
+          8.25
+        ],
+        "fontPx": 26,
+        "floorPx": 28,
+        "seconds": 3.25,
+        "elements": [
+          {
+            "selector": "#q-who",
+            "text": "you · palak paneer · v1",
+            "fontPx": 26,
+            "time": 8.25,
+            "seconds": 3.25
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Yes, in step 6 and step 10. The gravy will be a little le...\" (37 words) is on screen 2.27 s (±0.01 s), under its 8.70 s floor: hold it about 0.5 s + 0.3 s a word (11.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Yes, in step 6 and step 10. The gravy will be a little less rich, but it still works. Simmer 1–2 minutes less so it stays thick, and add a teaspoon of ghee if you like.",
+        "selector": "#answer",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ask.html",
+        "bbox": {
+          "x": 86,
+          "y": 766,
+          "width": 253.02999999999997,
+          "height": 59
+        },
+        "time": 9.203,
+        "words": 37,
+        "seconds": 2.266,
+        "floorSeconds": 8.7
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"one answer · metered against twenty a day\" (7 words) is on screen 0.56 s (±0.01 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "one answer · metered against twenty a day",
+        "selector": "#ask-foot",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ask.html",
+        "bbox": {
+          "x": 86,
+          "y": 1254,
+          "width": 734.73,
+          "height": 37
+        },
+        "time": 10.906,
+        "words": 7,
+        "seconds": 0.563,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 2 text elements stay under it for 0.5 s or more, the smallest \"on the list\" at 26 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "on the list",
+        "selector": "#row-1 > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/fridge.html",
+        "bbox": {
+          "x": 74,
+          "y": 1037.98,
+          "width": 200.2,
+          "height": 35
+        },
+        "time": 12.75,
+        "times": [
+          12.75,
+          12.875
+        ],
+        "fontPx": 26,
+        "floorPx": 28,
+        "seconds": 2.125,
+        "elements": [
+          {
+            "selector": "#row-1 > span:nth-of-type(1)",
+            "text": "on the list",
+            "fontPx": 26,
+            "time": 12.75,
+            "seconds": 2.125
+          },
+          {
+            "selector": "#row-2 > span:nth-of-type(1)",
+            "text": "to buy",
+            "fontPx": 26,
+            "time": 12.875,
+            "seconds": 2
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"It counts what you are missing, not just what the reel said.\" (12 words) is on screen 1.73 s (±0.01 s), under its 3.07 s floor: hold it about 0.5 s + 0.3 s a word (4.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "It counts what you are missing, not just what the reel said.",
+        "selector": "#fridge-foot",
+        "dataAttributes": {},
+        "sourceFile": "compositions/fridge.html",
+        "bbox": {
+          "x": 72,
+          "y": 1243.67,
+          "width": 513.84,
+          "height": 88.78999999999996
+        },
+        "time": 13.141,
+        "words": 12,
+        "seconds": 1.727,
+        "floorSeconds": 3.075
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"STEP 04 · COVER AND BLEND\" (5 words) is on screen 1.33 s (±0.01 s), under its 1.50 s floor: hold it about 0.5 s + 0.3 s a word (2.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "STEP 04 · COVER AND BLEND",
+        "selector": "#step-name",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cook.html",
+        "bbox": {
+          "x": 74,
+          "y": 478.21,
+          "width": 525,
+          "height": 40.00000000000006
+        },
+        "time": 15.539,
+        "words": 5,
+        "seconds": 1.328,
+        "floorSeconds": 1.5
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"YOUR PAN · 2 NOV\" (4 words) is on screen 1.04 s (±0.01 s), under its 1.27 s floor: hold it about 0.5 s + 0.3 s a word (1.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "YOUR PAN · 2 NOV",
+        "selector": "#cap-photo-a",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cook.html",
+        "bbox": {
+          "x": 579.39,
+          "y": 1146,
+          "width": 291.19999999999993,
+          "height": 35
+        },
+        "time": 15.867,
+        "words": 4,
+        "seconds": 1.039,
+        "floorSeconds": 1.275
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 4 text elements stay under it for 0.5 s or more, the smallest \"cook mode\" at 26 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "cook mode",
+        "selector": "#cap-app-a",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cook.html",
+        "bbox": {
+          "x": 273.09,
+          "y": 1146,
+          "width": 163.82,
+          "height": 35
+        },
+        "time": 15.875,
+        "times": [
+          15.875,
+          15.875,
+          17,
+          17
+        ],
+        "fontPx": 26,
+        "floorPx": 28,
+        "seconds": 1.125,
+        "elements": [
+          {
+            "selector": "#cap-app-a",
+            "text": "cook mode",
+            "fontPx": 26,
+            "time": 15.875,
+            "seconds": 1.125
+          },
+          {
+            "selector": "#cap-photo-a",
+            "text": "your pan · 2 nov",
+            "fontPx": 26,
+            "time": 15.875,
+            "seconds": 1.125
+          },
+          {
+            "selector": "#cap-app-b",
+            "text": "cook mode",
+            "fontPx": 26,
+            "time": 17,
+            "seconds": 1.625
+          },
+          {
+            "selector": "#cap-photo-b",
+            "text": "your pan · 2 nov",
+            "fontPx": 26,
+            "time": 17,
+            "seconds": 1.625
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Every step knows its ingredients. And the photo of it.\" (10 words) is on screen 2.54 s (±0.01 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Every step knows its ingredients. And the photo of it.",
+        "selector": "#cook-foot",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cook.html",
+        "bbox": {
+          "x": 72,
+          "y": 1257.07,
+          "width": 815.47,
+          "height": 40
+        },
+        "time": 16,
+        "words": 10,
+        "seconds": 2.539,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and \"a cooking journal that reads the reel\" renders at 26 px for 2.50 s: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "a cooking journal that reads the reel",
+        "selector": "#sub",
+        "dataAttributes": {},
+        "sourceFile": "compositions/outro.html",
+        "bbox": {
+          "x": 164.81,
+          "y": 1306,
+          "width": 750.38,
+          "height": 35
+        },
+        "time": 19.5,
+        "times": [
+          19.5
+        ],
+        "fontPx": 26,
+        "floorPx": 28,
+        "seconds": 2.5,
+        "elements": [
+          {
+            "selector": "#sub",
+            "text": "a cooking journal that reads the reel",
+            "fontPx": 26,
+            "time": 19.5,
+            "seconds": 2.5
+          }
+        ]
+      }
+    ],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 176
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

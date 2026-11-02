@@ -1,0 +1,201 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Fraunces";
+      src: url("assets/fonts/fraunces.woff2") format("woff2");
+      font-weight: 400 700;
+      font-style: normal;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Karla";
+      src: url("assets/fonts/karla.woff2") format("woff2");
+      font-weight: 300 800;
+      font-style: normal;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Mono";
+      src: url("assets/fonts/mono.woff2") format("woff2");
+      font-weight: 400 700;
+      font-style: normal;
+      font-display: block;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #141110;
+      overflow: hidden;
+    }
+    #cook-label {
+      position: absolute;
+      left: 72px;
+      top: 300px;
+      font-family: "Mono", monospace;
+      font-size: 30px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #c8372b;
+      opacity: 0;
+    }
+    #cook-h {
+      position: absolute;
+      left: 72px;
+      top: 348px;
+      width: 940px;
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      font-size: 92px;
+      line-height: 1.02;
+      letter-spacing: -0.022em;
+      color: #f5efe6;
+      opacity: 0;
+    }
+    #step-name,
+    #step-name-b {
+      position: absolute;
+      left: 74px;
+      top: 476px;
+      font-family: "Mono", monospace;
+      font-size: 30px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #a79c93;
+      opacity: 0;
+    }
+    #step-name b,
+    #step-name-b b {
+      color: #f5efe6;
+      font-weight: 600;
+    }
+    .pair {
+      position: absolute;
+      left: 0;
+      top: 560px;
+      width: 1080px;
+      height: 700px;
+    }
+    .card {
+      position: absolute;
+      top: 0;
+      height: 520px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 34px 64px rgba(0, 0, 0, 0.55);
+    }
+    .card.app {
+      left: 120px;
+      width: 380px;
+      padding: 7px;
+      border-radius: 34px;
+      background: #0a0807;
+      border: 1px solid #3a312c;
+    }
+    .card.app img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: -286px;
+      border-radius: 27px;
+    }
+    .card.photo {
+      left: 580px;
+      width: 380px;
+      padding: 8px;
+      background: #f2e9dc;
+      border: 1px solid #d8cbb8;
+    }
+    .card.photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .cap {
+      position: absolute;
+      top: 546px;
+      width: 380px;
+      text-align: center;
+      font-family: "Mono", monospace;
+      font-size: 28px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #a79c93;
+    }
+    #cap-app-a, #cap-app-b {
+      left: 120px;
+    }
+    #cap-photo-a, #cap-photo-b {
+      left: 580px;
+    }
+    #cook-foot {
+      position: absolute;
+      left: 72px;
+      top: 1180px;
+      font-family: "Karla", sans-serif;
+      font-size: 34px;
+      color: #a79c93;
+      opacity: 0;
+    }
+    #cook-foot b {
+      color: #f5efe6;
+      font-weight: 500;
+    }
+  </style>
+
+  <div id="root" data-composition-id="cook" data-width="1080" data-height="1920">
+    <p id="cook-label" class="clip" data-start="0.01" data-duration="3.67" data-track-index="1">05 · the cook</p>
+    <h2 id="cook-h" class="clip" data-start="0.09" data-duration="3.57" data-track-index="1">The page at the stove.</h2>
+
+    <p id="step-name" class="clip" data-start="0.5" data-duration="3.33" data-track-index="2"><b>step 04</b> · blend</p>
+    <p id="step-name-b" class="clip" data-start="1.95" data-duration="1.88" data-track-index="2"><b>step 11</b> · paneer</p>
+
+    <div class="pair clip" id="pair-a" data-start="0.4" data-duration="1.6" data-track-index="3">
+      <div class="card app"><img src="assets/shots/cook-app-04.jpg" alt="" data-layout-allow-overflow /></div>
+      <div class="card photo"><img src="assets/cooks/puree.jpg" alt="" /></div>
+      <div class="cap" id="cap-app-a">cook mode</div>
+      <div class="cap" id="cap-photo-a">your pan</div>
+    </div>
+
+    <div class="pair clip" id="pair-b" data-start="1.95" data-duration="1.75" data-track-index="4">
+      <div class="card app"><img src="assets/shots/cook-app-11.jpg" alt="" data-layout-allow-overflow /></div>
+      <div class="card photo"><img src="assets/cooks/pan.jpg" alt="" /></div>
+      <div class="cap" id="cap-app-b">cook mode</div>
+      <div class="cap" id="cap-photo-b">your pan</div>
+    </div>
+
+    <p id="cook-foot" class="clip" data-start="0.95" data-duration="2.88" data-track-index="5">Every step knows its <b>ingredients</b>.</p>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // the cut is a crossfade: this scene rises over the one before it
+    tl.fromTo("#root", { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "none" }, 0);
+
+    tl.fromTo("#cook-label", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.36, ease: "power2.out" }, 0.01);
+    tl.fromTo(
+      "#cook-h",
+      { opacity: 0, y: 22, filter: "blur(8px)" },
+      { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.55, ease: "power3.out" },
+      0.09,
+    );
+
+    // step 04
+    tl.fromTo("#pair-a .card.app", { opacity: 0, y: 90, rotate: -2 }, { opacity: 1, y: 0, rotate: 0, duration: 0.6, ease: "power3.out" }, 0.4);
+    tl.fromTo("#pair-a .card.photo", { opacity: 0, y: 90, rotate: 2 }, { opacity: 1, y: 0, rotate: 0, duration: 0.6, ease: "power3.out" }, 0.5);
+    tl.fromTo("#cap-app-a, #cap-photo-a", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.86);
+    tl.fromTo("#step-name", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.34 }, 0.52);
+    tl.fromTo("#cook-foot", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4 }, 0.96);
+
+    // step 11 replaces it on the same cards
+    tl.to("#pair-a", { opacity: 0, duration: 0.24, ease: "power1.in" }, 1.94);
+    tl.fromTo("#pair-b", { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power1.out" }, 1.98);
+    tl.fromTo("#pair-b .card.photo", { scale: 1.06 }, { scale: 1, duration: 1.1, ease: "power2.out" }, 2.0);
+    tl.fromTo("#step-name", { opacity: 1 }, { opacity: 0, duration: 0.16, immediateRender: false }, 1.9);
+    tl.fromTo("#step-name-b", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.34 }, 2.0);
+
+    window.__timelines["cook"] = tl;
+  </script>
+</template>

@@ -1,0 +1,136 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Fraunces";
+      src: url("assets/fonts/fraunces.woff2") format("woff2");
+      font-weight: 400 700;
+      font-style: normal;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Karla";
+      src: url("assets/fonts/karla.woff2") format("woff2");
+      font-weight: 300 800;
+      font-style: normal;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Mono";
+      src: url("assets/fonts/mono.woff2") format("woff2");
+      font-weight: 400 700;
+      font-style: normal;
+      font-display: block;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #141110;
+      overflow: hidden;
+    }
+    #halo {
+      position: absolute;
+      left: 140px;
+      top: 380px;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200, 55, 43, 0.22) 0%, rgba(200, 55, 43, 0) 62%);
+    }
+    #mark {
+      position: absolute;
+      left: 400px;
+      top: 660px;
+      width: 280px;
+      height: 280px;
+      border-radius: 24%;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    }
+    #mark img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 24%;
+    }
+    #word {
+      position: absolute;
+      left: 0;
+      top: 1010px;
+      width: 1080px;
+      text-align: center;
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      font-size: 196px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #f5efe6;
+    }
+    #word i {
+      font-style: normal;
+      color: #c8372b;
+    }
+    #tagline {
+      position: absolute;
+      left: 0;
+      top: 1216px;
+      width: 1080px;
+      text-align: center;
+      font-family: "Karla", sans-serif;
+      font-size: 60px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #f5efe6;
+    }
+    #sub {
+      position: absolute;
+      left: 0;
+      top: 1306px;
+      width: 1080px;
+      text-align: center;
+      font-family: "Mono", monospace;
+      font-size: 28px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #a79c93;
+    }
+  </style>
+
+  <div id="root" data-composition-id="outro" data-width="1080" data-height="1920">
+    <div id="halo" class="clip" data-start="0.0" data-duration="3.37" data-track-index="1"></div>
+
+    <div id="mark" class="clip" data-start="0.05" data-duration="3.32" data-track-index="2">
+      <img src="assets/brand/icon.png" alt="" />
+    </div>
+
+    <div id="word" class="clip" data-start="0.2" data-duration="3.17" data-track-index="3">Shoku<i>.</i></div>
+    <p id="tagline" class="clip" data-start="0.42" data-duration="2.95" data-track-index="3">Reels in. Dinner out.</p>
+    <div id="sub" class="clip" data-start="0.62" data-duration="2.75" data-track-index="3">a cooking journal that reads the reel</div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // the cut is a crossfade: this scene rises over the one before it
+    tl.fromTo("#root", { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "none" }, 0);
+
+    tl.fromTo("#halo", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 1.6, ease: "power1.out" }, 0);
+
+    tl.fromTo(
+      "#mark",
+      { opacity: 0, scale: 1.14, rotate: -8 },
+      { opacity: 1, scale: 1, rotate: -2.5, duration: 0.86, ease: "power3.out" },
+      0.05,
+    );
+    tl.to("#mark", { y: -8, duration: 2.4, ease: "sine.inOut" }, 0.9);
+
+    tl.fromTo(
+      "#word",
+      { opacity: 0, y: 34, filter: "blur(10px)" },
+      { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.66, ease: "power3.out" },
+      0.26,
+    );
+    tl.fromTo("#tagline", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.5);
+    tl.fromTo("#sub", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.72);
+
+    window.__timelines["outro"] = tl;
+  </script>
+</template>

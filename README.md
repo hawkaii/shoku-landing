@@ -21,12 +21,13 @@ product.
 | Ink | `#F5EFE6`, muted `#A6988E`, hairline `#332B27` |
 | Accent | crimson `#C8372B`, green `#4EA882`, amber `#E09F3E` |
 | Print | `#FFFDF9`, used only for polaroids and the share sheet |
-| Type | Fraunces for display, Plus Jakarta Sans for reading, JetBrains Mono for labels and numbers |
+| Type | Fraunces, set soft and slightly wonky (`SOFT 100, WONK 1`) so it sits with the brush mark, Karla for reading, JetBrains Mono for labels and numbers |
 | Radius | 6 chip, 8 media, 12 card, 20 sheet, 999 pill |
 | Motion | one curve, `cubic-bezier(0.22,1,0.36,1)` |
 
-The mark is `app/brand/8-plate-final.svg` (plate, tomato, one leaf) and the
-wordmark is Fraunces with a crimson full stop.
+The mark is the app launcher icon itself, `assets/icon.png`, untouched. It sits on
+the type axis at the top of the page and scrolls away; the pill carries the
+wordmark in Fraunces with a crimson full stop.
 
 ## What is real on the page
 

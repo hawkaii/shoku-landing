@@ -36,9 +36,13 @@ Never a gradient. Never a coloured shadow. Never a second accent.
 
 | Family | Role |
 |---|---|
-| Fraunces | display, headings, quotes. Weight 600, never 900. |
-| Plus Jakarta Sans | reading text, buttons, labels that are sentences |
+| Fraunces, `SOFT 100` `WONK 1` | display, headings, quotes, the recipe step in italic. The same axes the brush mark lives on: soft terminals, a few letters deliberately off. Weight 500 to 600, never 900. |
+| Karla | reading text, buttons, labels that are sentences |
 | JetBrains Mono | numbers, step numbers, uppercase micro labels, timestamps |
+
+The mark is the launcher icon, not a redrawn SVG, and never recoloured. It
+belongs to the page, not the viewport: it sits on the type axis at the top and
+scrolls away with the hero, while the pill stays.
 
 Sizes: display `clamp(2.75rem, 6.4vw, 4.5rem)`, h2 `clamp(1.875rem, 3.4vw, 2.875rem)`,
 h3 `1.4375rem`, body `0.9375rem`, label `0.6875rem` with `0.14em` tracking.

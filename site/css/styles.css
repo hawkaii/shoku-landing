@@ -504,7 +504,7 @@ a {
 .hero-visual {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   min-height: 620px;
 }
@@ -512,9 +512,9 @@ a {
 .hero-reel {
   position: absolute;
   left: 0;
-  bottom: 24px;
-  width: 148px;
-  height: 263px;
+  bottom: 40px;
+  width: 150px;
+  height: 267px;
   object-fit: cover;
   border-radius: var(--radius-lg);
   border: 1px solid var(--hairline);
@@ -537,13 +537,14 @@ a {
   display: block;
 }
 
-.phone-behind {
-  position: absolute;
-  right: -28px;
-  bottom: -24px;
-  width: 220px;
-  transform: rotate(4deg);
-  opacity: 0.96;
+.phone-pair {
+  display: flex;
+  gap: var(--space-200);
+  justify-content: center;
+  align-items: flex-start;
+}
+.phone-pair .phone {
+  width: 47%;
 }
 
 /* --------------------------------------------------------------- reveal */
@@ -854,6 +855,12 @@ a {
   .reels {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .reel:last-child {
+    grid-column: 1 / -1;
+  }
+  .reel:last-child img {
+    aspect-ratio: 16 / 9;
+  }
   .section {
     padding: var(--space-700) 0;
   }
@@ -889,7 +896,7 @@ a {
     grid-template-columns: minmax(0, 1fr);
   }
   .hero {
-    padding: var(--space-700) 0 var(--space-600);
+    padding: var(--space-900) 0 var(--space-600);
   }
   .hero-visual {
     justify-content: center;
@@ -897,7 +904,10 @@ a {
   .phone {
     width: 260px;
   }
-  .phone-behind {
+  .phone-pair .phone {
+    width: 260px;
+  }
+  .phone-pair .phone:last-child {
     display: none;
   }
   .hero-reel {

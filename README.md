@@ -1,7 +1,6 @@
 # Shoku landing page
 
-One static page, plus the launch reel. No build step, no framework, no runtime
-dependencies.
+One static directory. No build step, no framework, no dependencies.
 
 ```bash
 cd site
@@ -9,57 +8,77 @@ python3 -m http.server 8100
 # http://127.0.0.1:8100
 ```
 
-## The design
+## The look is the product
 
-Satoshi only, on an 8 point rhythm, over Shoku's own warm black — blended, not
-flat, with two low blooms and 3% grain so the surface has a tooth. One accent:
-crimson, and it is spent on a single button per screen.
+The page is the kitchen ticket the app is: paper, ink, one crimson accent,
+hairlines, and mono for anything you measure. Every token comes from
+`app/lib/core/theme/shoku_theme.dart`, so the site cannot drift away from the
+product.
 
 | | |
 |---|---|
-| Ground | `#12100F → #1B1715 → #0D0B0A`, crimson bloom at 16%, amber at 7%, grain 3.5% |
-| Ink | `#F5EFE6`, muted `#9C8F87`, hairline `rgba(245,239,230,.09)` |
-| Accent | `#C8372B`, used for the primary button, the full stop, and nothing else |
-| Type | 48 / 32 / 20 / 16 / 14 / 12, weights 400 / 500 / 600, tracking −2.8% on the h1 only |
-| Rhythm | 8, 16, 24, 32, 48, 64, 96, 128. Content 1120. |
-| Motion | hover 300ms, scroll rise 500ms, one curve, reduced motion honoured |
+| Night | `#141110`, surface `#1E1A18`, sunken `#292320` |
+| Ink | `#F5EFE6`, muted `#A6988E`, hairline `#332B27` |
+| Accent | crimson `#C8372B`, green `#4EA882`, amber `#E09F3E` |
+| Print | `#FFFDF9`, used only for polaroids and the share sheet |
+| Type | Fraunces, set soft and slightly wonky (`SOFT 100, WONK 1`) so it sits with the brush mark, Karla for reading, JetBrains Mono for labels and numbers |
+| Radius | 6 chip, 8 media, 12 card, 20 sheet, 999 pill |
+| Motion | one curve, `cubic-bezier(0.22,1,0.36,1)` |
 
-Four sections: hero, three features, the cook pair, footer. The page is 4.3k
-pixels tall on a desktop and 5.6k on a phone, and its critical path is the two
-font files, the stylesheet, the script and one screenshot.
+The mark is the app launcher icon itself, `assets/icon.png`, untouched. It sits on
+the type axis at the top of the page and scrolls away; the pill carries the
+wordmark in Fraunces with a crimson full stop.
 
-## What is real
+## What is real on the page
 
-Nothing invented. Every number is read off the product:
+Nothing here is invented. The assistant panels are answers the API actually
+returned on 2 November:
 
-| On the page | Where it came from |
+| Panel | Where it came from |
 |---|---|
-| Hero screenshot | the app at 390 × 844, captured a frame at a time |
-| 5 of 23, 17 to buy | the app's own fridge count for palak paneer |
-| The cook pair | cook mode captured from the app at steps 1, 4 and 11, beside the photographs of those steps taken on 2 November |
+| Ask | `POST /v1/assistant/ask`, palak paneer, "can i skip the cream?" |
+| Edit | the same endpoint, a two turn exchange that came back as `intent: edit` with two operations |
+| Suggest | `scope: kitchen`, three candidates with `have`, `total` and `missing` |
+| Capture | `scope: kitchen`, "i have 2 kg rice and paneer" → `rice 2 kg`, `paneer` with no amount |
+| Fridge counting | the app's own rule: units convert inside a family, never across |
+| Receipt lines | `POST /v1/pantry/parse-image` on a real photograph |
+| Screenshots | the app at 390 x 844, captured a frame at a time |
+| The four photos | the dish cooked from that page on 2 November |
+| 21 reels | `GET /v1/feed` |
 | 24 MB | the v1.26.1 arm64 release APK |
-| 11 steps, 23 ingredients, 30 min | the recipe page |
 
-The annotation over the hero screenshot is not baked into the image: it is an
-SVG layer in the app's own coordinate space, with a mask that blurs and dims
-everything outside the window.
+## Annotations
+
+The marks over the screenshots are not baked into the images. Each board is a
+`<figure class="board" data-board="dish">` holding the phone and an SVG whose
+viewBox is the app's own `390 x 844`. Coordinates live in `BOARDS` in
+`site/js/main.js`, in that space, so a mark stays on the row it points at
+whatever width the phone is drawn at.
+
+A board with a cropped screenshot declares its own height (`h`), and the phone
+image is cropped to match. The scrim is a mask with the marked rows cut out, so
+the rest of the screen dims and the row you were told about stays bright.
 
 ## Editing
 
 - Copy: `site/index.html`
-- Tokens and every component: `site/css/styles.css`
-- The annotation and the step pair: `site/js/main.js`
+- Tokens, and every component: `site/css/styles.css`
+- The annotation layer, the tabs, the apply, the matcher: `site/js/main.js`
+
+Any panel can be linked to directly while you are working on it:
+`index.html?panel=edit` opens the edit panel.
 
 ## Hosting
 
-Static. On Vercel: import the repository, root directory `site`, framework
-preset **Other**, no build command. `vercel.json` is there for a plain deploy.
+Static, so anything that serves files works. On Vercel: import the repository,
+root directory `site`, framework preset **Other**, no build command.
 
 Before publishing, replace `https://shoku.gradientdescent.wiki/` in
-`index.html`, `sitemap.xml` and `robots.txt` with the real domain.
+`index.html`, `sitemap.xml`, `robots.txt` and `privacy.html` with the real
+domain: it is used for the canonical URL and the social image.
 
-## The reel
+## Legal
 
-`video/` holds the HyperFrames project for the launch reel and the render:
-`video/out/shoku-reel.mp4`. It is not embedded on the page; it is the thing you
-post next to it.
+`privacy.html` and `terms.html` are short and factual on purpose: what is
+stored, what is sent to a model, what is never kept. Keep them true when the
+product changes.

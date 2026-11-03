@@ -18,48 +18,38 @@ gradient, nothing is glassmorphic.
 
 | Token | Value | Use |
 |---|---|---|
-| night | `#141110` | page |
-| surface | `#1E1A18` | tickets, cards |
-| sunken | `#292320` | hover, table stripes |
+| ground top | `#12100F` | page |
+| ground mid | `#1B1715` | the blend through the middle |
+| ground low | `#0D0B0A` | page foot |
 | ink | `#F5EFE6` | text |
-| muted | `#A6988E` | secondary text |
-| hairline | `#332B27` | every rule |
-| crimson | `#C8372B` | accent, the full stop, one button per screen |
-| green | `#4EA882` | additions |
-| amber | `#E09F3E` | adjustments |
-| print | `#FFFDF9` | polaroids and the share sheet, the only light surfaces |
-| chalk | `#F5EFE6` | annotations drawn on a screenshot |
+| muted | `#9C8F87` | secondary text |
+| hairline | `rgba(245,239,230,.09)` | every rule |
+| crimson | `#C8372B` | the one button, the full stop |
 
-Never a gradient. Never a coloured shadow. Never a second accent.
+Two blooms, crimson at 16% and amber at 7%, sit in the blend; 3.5% grain sits
+on top of everything. Nothing else is coloured.
 
 ## Type
 
 | Family | Role |
 |---|---|
-| Fraunces, `SOFT 100` `WONK 1` | display, headings, quotes, the recipe step in italic. The same axes the brush mark lives on: soft terminals, a few letters deliberately off. Weight 500 to 600, never 900. |
-| Karla | reading text, buttons, labels that are sentences |
-| JetBrains Mono | numbers, step numbers, uppercase micro labels, timestamps |
+| Satoshi 400 | body |
+| Satoshi 500 | buttons, captions, feature titles |
+| Satoshi 600 | h1 and h2 |
 
-The mark is the launcher icon, not a redrawn SVG, and never recoloured. It
-belongs to the page, not the viewport: it sits on the type axis at the top and
-scrolls away with the hero, while the pill stays.
-
-Sizes: display `clamp(2.75rem, 6.4vw, 4.5rem)`, h2 `clamp(1.875rem, 3.4vw, 2.875rem)`,
-h3 `1.4375rem`, body `0.9375rem`, label `0.6875rem` with `0.14em` tracking.
-Sentence case everywhere except mono labels, which are uppercase.
+48 / 32 / 20 / 16 / 14 / 12. Line heights 1.06 for the h1, 1.15 for the h2,
+1.6 for body. Tracking −2.8% on the h1 only. Sentence case everywhere.
 
 ## Space and radius
 
-`2, 4, 8, 12, 16, 24, 32, 48, 64, 96`. Nothing between them.
-Radius `6` chip, `8` media, `12` card, `20` sheet, `999` pill. An element
-inside another gets `outer − gap` when the gap is under 32px.
+`8, 16, 24, 32, 48, 64, 96, 128`. Content 1120, gutters 32. Radius 12 on cards,
+10 on buttons, 8 on small controls, 32 on the phone frame.
 
 ## Motion
 
-One curve: `cubic-bezier(0.22, 1, 0.36, 1)`. Layout `480ms`, colour `240ms`.
-Animate `transform` and `opacity` only. Respect
-`prefers-reduced-motion`: the annotations appear printed, the reveals do not
-move, the panels do not animate.
+One curve: `cubic-bezier(0.22, 1, 0.36, 1)`. Hover 300ms; the scroll rise is
+16px over 500ms, once, on an IntersectionObserver. Nothing animates layout.
+`prefers-reduced-motion` turns all of it off.
 
 ## Component rules
 

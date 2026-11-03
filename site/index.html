@@ -3,478 +3,143 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shoku · a cooking journal that reads the reel</title>
-<meta name="description" content="Shoku reads a cooking reel into a recipe page: eleven steps, the amounts, and a count of what your fridge is missing. Then it answers at the stove and edits when you ask.">
+<title>Shoku · cook the reels you save</title>
+<meta name="description" content="Shoku reads a cooking reel into steps you can follow, counts what your fridge already covers, and keeps a version every time you cook it.">
 <link rel="canonical" href="https://shoku.gradientdescent.wiki/">
-<meta name="theme-color" content="#f7f3eb">
+<meta name="theme-color" content="#12100f">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Shoku · reels in, dinner out">
-<meta property="og:description" content="A cooking journal that reads the reel, edits when you ask, and counts your fridge.">
+<meta property="og:title" content="Shoku · cook the reels you save">
+<meta property="og:description" content="A cooking journal that reads the reel, counts your fridge, and keeps every version you cook.">
 <meta property="og:image" content="https://shoku.gradientdescent.wiki/assets/og.jpg">
 <meta property="og:url" content="https://shoku.gradientdescent.wiki/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/icon.png">
+<link rel="preload" href="assets/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/satoshi-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/styles.css">
-<noscript><style>.tabs { display: none; } .panel { display: block; margin-bottom: var(--s-6); }</style></noscript>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Shoku",
-  "applicationCategory": "LifestyleApplication",
-  "operatingSystem": "Android",
-  "description": "A cooking journal that reads recipes out of reels, matches them against your fridge, and keeps a version for every cook.",
-  "downloadUrl": "https://github.com/hawkaii/shoku/releases/latest",
-  "license": "https://github.com/hawkaii/shoku/blob/main/LICENSE",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-}
-</script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
-  <a class="nav-mark" href="/" aria-label="Shoku, home">
-    <img src="assets/icon.png" alt="" width="62" height="62">
-  </a>
-
-
-<header class="nav">
-  <div class="nav-bar">
-    <a class="brand" href="/" aria-label="Shoku, home">
-      <img src="assets/icon.png" alt="" width="44" height="44">
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="/">
+      <img src="assets/icon.png" alt="" width="28" height="28">
       Shoku<span class="dot">.</span>
     </a>
-    <nav class="nav-links" aria-label="Sections">
-      <a href="#import">Import</a>
-      <a href="#assistant">Assistant</a>
-      <a href="#fridge">Fridge</a>
-      <a href="#cook">Cook</a>
-      <a href="#questions">Questions</a>
+    <nav aria-label="Sections">
+      <a href="#features">Features</a>
+      <a href="#product">Product</a>
+      <a class="btn btn-sm" href="https://github.com/hawkaii/shoku/releases/latest">Get the app</a>
     </nav>
-    <a class="btn btn-sm" href="https://github.com/hawkaii/shoku/releases/latest">Download</a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">
-      <span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span></span>
-    </button>
   </div>
 </header>
 
-<div class="mobile-menu" id="menu" data-open="false" aria-hidden="true">
-  <a href="#import">Import</a>
-  <a href="#assistant">Assistant</a>
-  <a href="#fridge">Fridge</a>
-  <a href="#cook">Cook</a>
-  <a href="#questions">Questions</a>
-  <a href="https://github.com/hawkaii/shoku/releases/latest">Download</a>
-</div>
-
 <main id="main">
 
-  <!-- 01 · the reel ------------------------------------------------------ -->
+  <!-- 1 · hero --------------------------------------------------------- -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="label label-crimson">01 · The reel</p>
-        <h1 class="display">Reels in.<br>Dinner out<span class="dot">.</span></h1>
-        <p class="lede">Shoku reads the reel for you: eleven steps, twenty three ingredients, the amounts beside the thing they belong to. Then it answers at the stove, edits when you ask, and counts what your fridge is missing.</p>
+        <h1 class="h1">Cook the reels you save.</h1>
+        <p class="lede">A cooking reel becomes a recipe you can follow, counted against your fridge, and versioned every time you cook it.</p>
         <div class="hero-actions">
           <a class="btn" href="https://github.com/hawkaii/shoku/releases/latest">
-            Download for Android
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M4 20h16"/></svg>
+            Get the app
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v11"/><path d="m6 12 6 6 6-6"/><path d="M5 21h14"/></svg>
           </a>
-          <a class="btn-ghost" href="#assistant">See what it can do</a>
         </div>
-        <p class="tiny hero-proof">24 MB APK · Android · source on GitHub</p>
-
-        <nav class="hero-index" aria-label="On this page">
-          <a href="#main"><span class="n">01</span> The reel <span class="what">what a video becomes</span></a>
-          <a href="#import"><span class="n">02</span> Import <span class="what">share it, and it is read</span></a>
-          <a href="#assistant"><span class="n">03</span> Assistant <span class="what">ask, edit, suggest, capture</span></a>
-          <a href="#fridge"><span class="n">04</span> Fridge <span class="what">what you already have</span></a>
-          <a href="#cook"><span class="n">05</span> The cook <span class="what">the pan, beside the page</span></a>
-          <a href="#questions"><span class="n">06</span> Questions <span class="what">the honest answers</span></a>
-        </nav>
+        <div class="hero-proof">
+          <span>24 MB</span><span class="sep"></span>
+          <span>Android</span><span class="sep"></span>
+          <span>source on GitHub</span>
+        </div>
       </div>
 
-      <figure class="board board-hero reveal" data-board="dish">
+      <figure class="board reveal" data-board="dish">
         <div class="board-phone">
-          <img src="assets/shots/dish.jpg" width="585" height="1266" alt="The palak paneer page in Shoku: cover photo, 5 of 23 ingredients already in the fridge, 17 missing, and the eleven steps of the recipe." fetchpriority="high">
+          <img src="assets/shots/dish.webp" width="585" height="1266" alt="A recipe page in Shoku: the cover photo, five of twenty three ingredients already in the fridge, and the eleven steps of the method." fetchpriority="high">
           <svg class="marks" viewBox="0 0 390 844" preserveAspectRatio="none" aria-hidden="true"></svg>
         </div>
-        <ol class="board-notes">
-          <li><button class="board-note" data-mark="1" type="button"><span class="n">1</span><span>Written from the video: eleven steps, and every step knows its own ingredients.</span></button></li>
-          <li><button class="board-note" data-mark="2" type="button"><span class="n">2</span><span>Counted against your kitchen: five here, one on the list, seventeen to buy.</span></button></li>
-        </ol>
+        <button class="board-note" data-mark="1" type="button">
+          <span class="n">1</span>
+          <span>Read from the video, then counted against your kitchen: five here, seventeen to buy.</span>
+        </button>
       </figure>
     </div>
   </section>
 
-  <!-- 02 · import -------------------------------------------------------- -->
-  <section class="section" id="import">
+  <!-- 2 · features ----------------------------------------------------- -->
+  <section class="section" id="features">
     <div class="wrap">
-      <div class="split split-center">
-      <div class="section-head" style="margin-bottom:0">
-        <p class="label label-crimson">02 · Import a reel</p>
-        <h2 class="h2">Share the reel. The recipe comes back.</h2>
-        <p class="body">Send a reel from Instagram or YouTube, or take one from the Wall. The model reads the video and the caption, then writes the method out in order, linking each step to the ingredients it uses.</p>
-        <p class="body">It also says what it cannot know. Amounts read off a video are estimates, and the page carries that line at the top instead of hiding it.</p>
-        <p class="tiny">21 reels on the Wall · 11 steps for palak paneer · 23 ingredients</p>
+      <p class="eyebrow reveal">01 — What it does</p>
+      <h2 class="h2 reveal">A short list, done properly.</h2>
 
-        <div class="ticket" style="margin-top: var(--s-6)">
-          <div class="ticket-head">
-            <span class="label">What the model writes down</span>
-            <span class="label label-crimson">one reel</span>
-          </div>
-          <div class="diff">
-            <div class="diff-row"><span class="g">·</span><span>the title</span><span class="was">Palak Paneer</span></div>
-            <div class="diff-row"><span class="g">·</span><span>the method, in order</span><span class="was">11 steps</span></div>
-            <div class="diff-row"><span class="g">·</span><span>the ingredients for each step</span><span class="was">23 lines</span></div>
-            <div class="diff-row"><span class="g">·</span><span>how long it takes</span><span class="was">30 min</span></div>
-            <div class="diff-row"><span class="g">·</span><span>what it cannot know</span><span class="was">amounts may be off</span></div>
-          </div>
-        </div>
-      </div>
-
-      <figure class="board reveal" data-board="share">
-        <div class="board-phone">
-          <img src="assets/shots/share-sheet.jpg" width="720" height="1600" alt="The Android share sheet open over an Instagram reel, with Shoku listed between Slack and Add to chat." loading="lazy">
-          <svg class="marks" viewBox="0 0 720 1600" preserveAspectRatio="none" aria-hidden="true"></svg>
-        </div>
-        <ol class="board-notes">
-          <li><button class="board-note" data-mark="1" type="button"><span class="n">1</span><span>Shoku sits in the share sheet with everything else. One tap, and the reel is on its way.</span></button></li>
-        </ol>
-      </figure>
-
-
-      </div>
-
-      <div class="section-head" style="margin-top: var(--s-9); margin-bottom: var(--s-6)">
-        <h3 class="h3">Saved on Instagram. Read in Shoku.</h3>
-        <p class="body">Three reels from the feed, and the pages that came back. Nothing is retyped, and the thumbnail stays with the recipe.</p>
-      </div>
-
-      <div class="transfer reveal" id="transfer">
-        <div class="transfer-reels">
-          <figure class="reelcard" style="--i:0">
-            <img src="assets/reels/DcpcVnJTzC3.jpg" width="640" height="1138" alt="A reel of spicy boiled eggs." loading="lazy">
-            <figcaption><span class="t">Spicy Boiled Egg</span>5 steps · read</figcaption>
-          </figure>
-          <figure class="reelcard" style="--i:1">
-            <img src="assets/reels/DdXytYoT6q7.jpg" width="640" height="1137" alt="A reel of egg paratha." loading="lazy">
-            <figcaption><span class="t">Egg Paratha</span>8 steps · read</figcaption>
-          </figure>
-          <figure class="reelcard" style="--i:2">
-            <img src="assets/reels/DbWQLfUBwdu.jpg" width="640" height="1138" alt="A reel of chili crisp eggs." loading="lazy">
-            <figcaption><span class="t">Chili Crisp Eggs</span>8 steps · read</figcaption>
-          </figure>
-        </div>
-
-        <div class="transfer-arrow" aria-hidden="true">
-          <svg viewBox="0 0 190 60">
-            <path class="arrow-line" d="M6 30c34-12 68 12 102 0 14-5 26-6 44-2"/>
-            <path class="arrow-head" d="M142 20l10 8-11 7"/>
+      <div class="features">
+        <article class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2.5" y="5" width="19" height="14" rx="3"/>
+            <path d="M10 9.4v5.2l4.4-2.6z"/>
           </svg>
-          <span class="tiny">share, or paste a link</span>
-        </div>
+          <h3 class="h3">Read from the reel</h3>
+          <p>The model watches the video and writes the method out in order: eleven steps, twenty three ingredients, each step linked to what it uses. Where an amount was never spoken, the page says so.</p>
+        </article>
 
-        <figure class="board" data-board="plain">
-          <div class="board-phone" style="width: 248px">
-            <img src="assets/shots/dish.jpg" width="585" height="1266" alt="The palak paneer page that came back: cover photo, ingredients, steps and the fridge count." loading="lazy">
-            <svg class="marks" viewBox="0 0 390 844" preserveAspectRatio="none" aria-hidden="true"></svg>
-          </div>
-          <p class="caption" style="text-align:center">in your cookbook, with its cover</p>
-        </figure>
-      </div>    </div>
-  </section>
+        <article class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="5" y="2.5" width="14" height="19" rx="3"/>
+            <path d="M5 10h14"/>
+            <path d="M8 6h1.5"/>
+            <path d="M8 13.5h1.5"/>
+          </svg>
+          <h3 class="h3">Counted against your fridge</h3>
+          <p>Every ingredient is checked against your shelf. Units convert inside a family, grams to kilos, and nothing is guessed. What is left is the shopping list.</p>
+          <span class="readout"><span class="on">5 of 23</span> in the fridge <span class="sep"></span> 17 to buy</span>
+        </article>
 
-  <!-- 03 · the assistant ------------------------------------------------- -->
-  <section class="section" id="assistant">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="label label-crimson">03 · The assistant</p>
-        <h2 class="h2">Ask it, edit with it, or let it choose.</h2>
-        <p class="body">One thread per dish, and a kitchen thread with no dish at all. The scope sits above the input, so you always know what it is looking at. Everything below is a real answer from the build, recorded on 2 November.</p>
-      </div>
-
-      <div class="demo">
-        <div class="tabs" role="tablist" aria-label="Assistant examples">
-          <button class="tab" role="tab" id="tab-ask" aria-controls="panel-ask" aria-selected="true">
-            <span class="k">Ask</span>
-            <span class="t">A question at the stove</span>
-            <span class="d">It knows which step you are on, so the answer is about the pan in front of you.</span>
-          </button>
-          <button class="tab" role="tab" id="tab-edit" aria-controls="panel-edit" aria-selected="false">
-            <span class="k">Edit</span>
-            <span class="t">Change the recipe by talking</span>
-            <span class="d">It proposes the edits, you approve them, and the old version stays.</span>
-          </button>
-          <button class="tab" role="tab" id="tab-suggest" aria-controls="panel-suggest" aria-selected="false">
-            <span class="k">Suggest</span>
-            <span class="t">Dinner, from what you have</span>
-            <span class="d">The matcher finds the dishes; the model picks three and says what is missing.</span>
-          </button>
-          <button class="tab" role="tab" id="tab-capture" aria-controls="panel-capture" aria-selected="false">
-            <span class="k">Capture</span>
-            <span class="t">“I have two kilos of rice”</span>
-            <span class="d">It reads the sentence into fridge rows, and writes nothing until you confirm.</span>
-          </button>
-        </div>
-
-        <div class="panels">
-          <article class="panel" id="panel-ask" role="tabpanel" aria-labelledby="tab-ask" data-open="true">
-            <div class="turn turn-user">can i skip the cream?</div>
-            <div class="turn turn-bot"><span class="who">Shoku · palak paneer · v1</span>Yes, you can skip the cream in step 6 and step 10. The gravy will be a little less rich and creamy, but still work. If you want richness without cream, simmer 1–2 minutes less so it stays thick, and you can add 1 extra teaspoon ghee if you like.</div>
-            <p class="tiny">One question, one answer, metered against the twenty talks a day.</p>
-          </article>
-
-          <article class="panel" id="panel-edit" role="tabpanel" aria-labelledby="tab-edit">
-            <div class="turn turn-user">i want to add potato</div>
-            <div class="turn turn-bot"><span class="who">Shoku</span>How much potato would you like to add to the Palak Paneer?</div>
-            <div class="turn turn-user">2 potatoes, cubed</div>
-            <div class="turn turn-bot"><span class="who">Shoku · the edit</span>Added 2 cubed potatoes and a step to simmer them in the gravy.</div>
-
-            <div class="ticket">
-              <div class="ticket-head">
-                <span class="label">The diff</span>
-                <span class="label label-crimson">2 edits</span>
-              </div>
-              <div class="diff">
-                <div class="diff-row add"><span class="g">+</span><span>potatoes</span><span class="was">2, cubed</span></div>
-                <div class="diff-row change"><span class="g">~</span><span>step 6</span><span class="was">simmer the potatoes</span></div>
-              </div>
-              <div class="version-strip" id="version-strip">
-                <span>versions</span>
-                <span class="vchip is-head" data-v="1">v1</span>
-              </div>
-              <button class="btn btn-sm" id="apply" style="margin-top: var(--s-4)">Apply as v2</button>
-              <p class="caption" style="margin-top: var(--s-3)" id="apply-note">Nothing is written until you press it, and v1 stays in the history.</p>
-            </div>
-          </article>
-
-          <article class="panel" id="panel-suggest" role="tabpanel" aria-labelledby="tab-suggest">
-            <div class="turn turn-user">what can i cook tonight</div>
-            <div class="turn turn-bot"><span class="who">Shoku · no dish · your kitchen</span>Tonight you could make Spicy Boiled Egg (needs red chili powder, sesame oil), Egg Paratha (needs green chilli, coriander, spices, rotis or dough), or Chili Crisp Eggs (needs chili crisp, soy sauce, sesame seeds, chili flakes).</div>
-            <div class="suggestions">
-              <article class="sug">
-                <img src="assets/reels/DcpcVnJTzC3.jpg" width="104" height="140" alt="" loading="lazy">
-                <div>
-                  <div class="top"><span class="name">Spicy Boiled Egg</span><span class="count">3 of 5</span></div>
-                  <div class="by">Ralston D’Souza · 5 steps</div>
-                  <div class="missing"><span class="chip">red chili powder</span><span class="chip">sesame oil</span></div>
-                </div>
-              </article>
-              <article class="sug">
-                <img src="assets/reels/DdXytYoT6q7.jpg" width="104" height="140" alt="" loading="lazy">
-                <div>
-                  <div class="top"><span class="name">Egg Paratha</span><span class="count">6 of 12</span></div>
-                  <div class="by">Ralston D’Souza · 8 steps</div>
-                  <div class="missing"><span class="chip">green chilli</span><span class="chip">coriander</span><span class="chip">ajwain</span><span class="chip more">+3</span></div>
-                </div>
-              </article>
-              <article class="sug">
-                <img src="assets/reels/DbWQLfUBwdu.jpg" width="104" height="140" alt="" loading="lazy">
-                <div>
-                  <div class="top"><span class="name">Chili Crisp Eggs</span><span class="count">3 of 7</span></div>
-                  <div class="by">Braydon Jackson Morgan · 8 steps</div>
-                  <div class="missing"><span class="chip">chili crisp</span><span class="chip">soy sauce</span><span class="chip more">+2</span></div>
-                </div>
-              </article>
-            </div>
-            <p class="tiny" style="margin-top: var(--s-4)">The matcher computes these against your shelf. The model only chooses among what it was given.</p>
-          </article>
-
-          <article class="panel" id="panel-capture" role="tabpanel" aria-labelledby="tab-capture">
-            <div class="turn turn-user">i have 2 kg rice and paneer</div>
-            <div class="turn turn-bot"><span class="who">Shoku · no dish · your kitchen</span>Noted rice and paneer.</div>
-            <div class="ticket">
-              <div class="ticket-head">
-                <span class="label">Before it lands</span>
-                <span class="label">2 rows</span>
-              </div>
-              <div class="diff">
-                <div class="diff-row add"><span class="g">·</span><span>rice</span><span class="was">2 kg</span></div>
-                <div class="diff-row"><span class="g">·</span><span>paneer</span><span class="was">amount?</span></div>
-              </div>
-              <button class="btn btn-sm" style="margin-top: var(--s-4)" type="button">Add 2 to the fridge</button>
-              <p class="caption" style="margin-top: var(--s-3)">Paneer has no amount because the sentence had none. It never invents one.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="split split-center" style="margin-top: var(--s-9)">
-        <div class="section-head" style="margin-bottom:0">
-          <h3 class="h3">It never edits behind your back.</h3>
-          <p class="body">An edit comes back as a list of operations with the words it will change, and a version id it was computed against. Press apply and one version is written. Ask for something destructive and it opens the real flow instead of doing it.</p>
-          <p class="body">Two versions can be compared, and the older one is never overwritten. That is the whole reason the journal exists.</p>
-          <p class="tiny">edit · apply · undo is another ask</p>
-        </div>
-
-        <figure class="board reveal" data-board="cook">
-          <div class="board-phone">
-            <img src="assets/shots/cook.jpg" width="585" height="700" alt="Cook mode in Shoku: step one of eleven in large type, its ingredient underneath, and an ask chip beside the step number." loading="lazy">
-            <svg class="marks" viewBox="0 0 390 467" preserveAspectRatio="none" aria-hidden="true"></svg>
-          </div>
-          <ol class="board-notes">
-            <li><button class="board-note" data-mark="1" type="button"><span class="n">1</span><span>One step at a time, and the ingredient for that step underneath it.</span></button></li>
-            <li><button class="board-note" data-mark="2" type="button"><span class="n">2</span><span>Ask from here and the question arrives carrying step one of eleven.</span></button></li>
-          </ol>
-        </figure>
+        <article class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="8" width="14" height="13" rx="2.5"/>
+            <path d="M7 8V5.5A2.5 2.5 0 0 1 9.5 3H17a2.5 2.5 0 0 1 2.5 2.5V16"/>
+            <path d="M6.5 12.5h7"/>
+          </svg>
+          <h3 class="h3">A version for every cook</h3>
+          <p>Change the cream, add the potato, log how it went. That becomes v2 and v1 stays beside it, so the one you preferred is never overwritten.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- 04 · the fridge ----------------------------------------------------- -->
-  <section class="section" id="fridge">
+  <!-- 3 · product ------------------------------------------------------ -->
+  <section class="section" id="product">
     <div class="wrap">
-      <div class="section-head">
-        <p class="label label-crimson">04 · The fridge</p>
-        <h2 class="h2">What you already have, counted.</h2>
-        <p class="body">Every ingredient in the recipe is checked against your shelf. The count is arithmetic, not a guess: units convert inside a family, grams to kilos, and a line whose units do not convert is left alone. Tap a row below and watch it move.</p>
-      </div>
+      <p class="eyebrow reveal">02 — In the kitchen</p>
+      <h2 class="h2 reveal">The page on one side, the pan on the other.</h2>
+      <p class="body reveal" style="margin-top: var(--s2)">Three steps from a real cook on 2 November. On the left, the app at that step. On the right, what the kitchen looked like. Step through them with the numbers or the arrows.</p>
 
-      <div class="split split-center">
-        <div class="stack">
-          <div class="matcher" id="matcher">
-            <div class="matcher-head">
-              <span class="label">Palak paneer · v1</span>
-              <span class="counter"><b id="m-have">5</b> of 23 · <b id="m-buy">17</b> to buy</span>
-            </div>
-            <div class="items" id="m-items">
-              <button class="item" type="button" aria-pressed="true" data-on="1"><span class="bx">×</span>ghee<span class="am">3.5 tbsp</span></button>
-              <button class="item" type="button" aria-pressed="true" data-on="1"><span class="bx">×</span>garlic<span class="am">11 cloves</span></button>
-              <button class="item" type="button" aria-pressed="true" data-on="1"><span class="bx">×</span>green chilli<span class="am">1</span></button>
-              <button class="item" type="button" aria-pressed="true" data-on="1"><span class="bx">×</span>onion<span class="am">1</span></button>
-              <button class="item" type="button" aria-pressed="true" data-on="1"><span class="bx">×</span>tomato<span class="am">2</span></button>
-              <button class="item" type="button" aria-pressed="false" data-on="0"><span class="bx"></span>palak<span class="am">150 g</span></button>
-              <button class="item" type="button" aria-pressed="false" data-on="0"><span class="bx"></span>paneer<span class="am">250 g</span></button>
-              <button class="item" type="button" aria-pressed="false" data-on="0"><span class="bx"></span>cream<span class="am">2 tbsp</span></button>
-            </div>
-            <p class="caption" style="margin-top: var(--s-4)">Eight of the twenty three are shown here. One more is already on the shopping list, which is why five have and seventeen to buy add up.</p>
-          </div>
-
-          <div class="receipt">
-            <p class="label" style="margin-bottom: var(--s-3)">And it fills from a receipt</p>
-            <div class="receipt-row"><span>amul butter</span><span class="am">500 g</span></div>
-            <div class="receipt-row"><span>tata salt</span><span class="am">1 kg</span></div>
-            <div class="receipt-row"><span>lays classic</span><span class="am">2 pcs</span></div>
-            <p class="caption" style="margin-top: var(--s-4)">Real output from one photo. The photo goes to a vision model once, comes back as lines you confirm, and is not kept.</p>
-          </div>
-        </div>
-
-        <figure class="board reveal" data-board="fridge">
+      <div class="pair reveal" id="pair">
+        <figure class="pane">
           <div class="board-phone">
-            <img src="assets/shots/fridge.jpg" width="585" height="704" alt="The fridge in Shoku: a cook from your fridge row of matched dishes, a to buy list, and the items in the fridge with their amounts." loading="lazy">
-            <svg class="marks" viewBox="0 0 390 469" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <img id="app-shot" src="assets/shots/cook-01.webp" width="585" height="1266" alt="Cook mode at step one: wash the palak.">
           </div>
-          <ol class="board-notes">
-            <li><button class="board-note" data-mark="1" type="button"><span class="n">1</span><span>The shelf suggests dinner, and says how much of each dish it already covers.</span></button></li>
-          </ol>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- 05 · the cook ------------------------------------------------------ -->
-  <section class="section" id="cook">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="label label-crimson">05 · The cook</p>
-        <h2 class="h2">The page on one side, the pan on the other.</h2>
-        <p class="body">Three steps from this cook, the ones photographed on 2 November, each paired with the frame that matches it. On the left, the app exactly as it stood at that step. On the right, what the step looked like in the kitchen. Step through them with the numbers, the arrows, or the keyboard.</p>
-      </div>
-
-      <div class="duo" id="duo">
-        <figure class="duo-pane">
-          <div class="board-phone duo-phone">
-            <img id="app-shot" src="assets/shots/cook-app-01.jpg" width="585" height="1266" alt="Cook mode at step one: wash the palak.">
-          </div>
-          <figcaption class="duo-cap">cook mode · step <b id="duo-step">01</b> of 11</figcaption>
+          <figcaption>Cook mode · step <span id="pair-step">01</span> of 11</figcaption>
         </figure>
 
-        <figure class="duo-pane">
+        <figure class="pane">
           <div class="photo-card">
-            <img id="cook-photo" src="assets/cooks/spinach.jpg" width="760" height="529" alt="The palak, washed, in a steel bowl.">
+            <img id="cook-photo" src="assets/cooks/spinach.webp" width="700" height="487" alt="The palak, washed, in a steel bowl.">
           </div>
-          <figcaption class="duo-cap">your kitchen · 2 November</figcaption>
+          <figcaption>Your kitchen · 2 November</figcaption>
         </figure>
       </div>
 
-      <p class="duo-text" id="duo-text">Wash the palak thoroughly under running water and drain.</p>
-
-      <div class="walker-controls">
-        <div class="rail" id="rail" role="group" aria-label="Jump to a step"></div>
+      <div class="pair-controls reveal">
         <button class="arrow" type="button" id="prev" aria-label="Previous step">←</button>
+        <div class="steps" id="steps" role="group" aria-label="Jump to a step"></div>
         <button class="arrow" type="button" id="next" aria-label="Next step">→</button>
-        <button class="btn btn-sm" type="button" id="share">Share this step</button>
-        <span class="tiny" id="share-note">three steps · the arrow keys work</span>
       </div>
 
-      <div class="share-panel" id="sharePanel">
-        <p class="tiny" id="share-hint">Tap “Share this step” to see the sheet.</p>
-        <aside class="sharecard" id="sharecard" aria-hidden="true">
-          <div class="sc-head"><img src="assets/icon.png" alt="">Shoku</div>
-          <div class="sc-num" id="sc-num">Step 01 of 11</div>
-          <div class="sc-art"><img id="sc-art" src="assets/cooks/spinach.jpg" alt=""></div>
-          <div class="sc-text" id="sc-text">Wash the palak thoroughly under running water and drain.</div>
-          <div class="sc-foot">palak paneer · 30 min · read from a reel</div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- 06 · questions ------------------------------------------------------ -->
-  <section class="section" id="questions">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="label label-crimson">06 · Questions</p>
-        <h2 class="h2">The things you would ask a model.</h2>
-      </div>
-      <div class="faq">
-        <details>
-          <summary>Does it make the amounts up?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="answer">No. The amounts are read from the video, and the page says they may be off in a line you cannot miss. Every amount can be edited, and the edit becomes a version.</p>
-        </details>
-        <details>
-          <summary>Which models are doing the reading?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="answer">A structured output model reads the reel into steps and ingredients, and Meta’s vision model reads a receipt photo. The matching against your shelf is plain arithmetic, not a model, which is why it never invents a dish.</p>
-        </details>
-        <details>
-          <summary>Can it edit or delete my recipe?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="answer">It proposes edits as a diff, and one version is written only when you press apply. It never deletes a version, and a destructive request opens the real flow instead of running.</p>
-        </details>
-        <details>
-          <summary>Are the suggestions made up?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="answer">The candidates are computed from the Wall against what you have in the fridge. The model is only allowed to choose among those, and to name what is missing from them.</p>
-        </details>
-        <details>
-          <summary>Does it keep my receipt photo?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="answer">The image is sent once, read once, and not stored. You see the lines before anything reaches your fridge, and the app tells you before the first upload.</p>
-        </details>
-        <details>
-          <summary>What happens offline?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="answer">The assistant needs the API, and it says so rather than pretending. The journal, the fridge and the shelf keep working, and anything you change syncs when you are back.</p>
-        </details>
-        <details>
-          <summary>How many questions do I get?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="answer">Twenty a day, shared between asking, editing, suggesting and capturing. The shelf, the matching and the journal do not count against it.</p>
-        </details>
-        <details>
-          <summary>Is there an iPhone version?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="answer">Not yet. The builds are Android APKs, and every release also publishes a debug build for testing.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta">
-    <div class="wrap">
-      <h2 class="h2">Cook the next reel you save<span class="dot">.</span></h2>
-      <p class="body" style="margin-inline:auto;text-align:center">Shoku is free, and every build is published in the open.</p>
-      <div class="cta-actions">
-        <a class="btn" href="https://github.com/hawkaii/shoku/releases/latest">Download for Android</a>
-        <a class="btn btn-quiet" href="https://github.com/hawkaii/shoku">Read the source</a>
-      </div>
-      <p class="tiny">Take the arm64 build for most phones. The debug build sits beside it on the same release.</p>
+      <p class="body reveal" id="pair-text" style="margin: var(--s4) auto 0; text-align: center">Wash the palak thoroughly under running water and drain.</p>
     </div>
   </section>
 
@@ -482,22 +147,19 @@
 
 <footer class="footer">
   <div class="wrap">
-    <div class="footer-top">
+    <div class="footer-in">
       <a class="brand" href="/">
-        <img src="assets/icon.png" alt="" width="42" height="42">
+        <img src="assets/icon.png" alt="" width="24" height="24">
         Shoku<span class="dot">.</span>
       </a>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="#import">Import</a>
-        <a href="#assistant">Assistant</a>
-        <a href="#fridge">Fridge</a>
-        <a href="#questions">Questions</a>
+      <nav aria-label="Footer">
         <a href="https://github.com/hawkaii/shoku">Source</a>
+        <a href="https://github.com/hawkaii/shoku/issues">Questions</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
       </nav>
     </div>
-    <p class="footer-note">Every build comes from GitHub Actions. The Android package is 24 MB, and installing it replaces an older Shoku rather than sitting beside it. Built for the Meta Global AI Developer Hackathon, Indie Developer track.</p>
+    <p class="footer-note">Every build comes from GitHub Actions. The Android package is 24 MB and replaces an older Shoku rather than sitting beside it. Built for the Meta Global AI Developer Hackathon, Indie Developer track.</p>
   </div>
 </footer>
 

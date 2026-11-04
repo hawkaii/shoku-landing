@@ -70,12 +70,28 @@ Any panel can be linked to directly while you are working on it:
 
 ## Hosting
 
-Static, so anything that serves files works. On Vercel: import the repository,
-root directory `site`, framework preset **Other**, no build command.
+Live at **https://shoku.gradientdescent.wiki**, on Vercel, project
+`shoku-landing`.
 
-Before publishing, replace `https://shoku.gradientdescent.wiki/` in
-`index.html`, `sitemap.xml`, `robots.txt` and `privacy.html` with the real
-domain: it is used for the canonical URL and the social image.
+Static, so anything that serves files works. The whole of `site/` is the
+deployment: `site/vercel.json` turns on `cleanUrls` (`/privacy`, not
+`/privacy.html`) and sets the asset cache headers, and there is no build step.
+
+Deploy from the folder itself, not the repository root, so `video/` never
+travels:
+
+```bash
+cd site
+npx vercel deploy --prod
+```
+
+The domain is a `CNAME` at Hostinger (`shoku` → `cname.vercel-dns.com`), and
+Vercel issues the certificate. `index.html`, `sitemap.xml` and `robots.txt`
+carry the live URL for the canonical tag and the social image; if the domain
+ever changes, those four strings change with it.
+
+If you connect the repo in the Vercel dashboard instead of using the CLI, set
+the project's root directory to `site` and leave the build command empty.
 
 ## Legal
 

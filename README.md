@@ -70,28 +70,35 @@ Any panel can be linked to directly while you are working on it:
 
 ## Hosting
 
-Live at **https://shoku.gradientdescent.wiki**, on Vercel, project
+Live at **https://shoku.gradientdescent.wiki**, on Cloudflare Workers, Worker
 `shoku-landing`.
 
 Static, so anything that serves files works. The whole of `site/` is the
-deployment: `site/vercel.json` turns on `cleanUrls` (`/privacy`, not
-`/privacy.html`) and sets the asset cache headers, and there is no build step.
+deployment. `wrangler.jsonc` sets that up and needs no build step:
 
-Deploy from the folder itself, not the repository root, so `video/` never
-travels:
+- `assets.directory` is `./site`, so `video/` never travels.
+- `html_handling: auto-trailing-slash` gives clean URLs (`/privacy`, not
+  `/privacy.html`), the same behaviour the old Vercel `cleanUrls` gave.
+- `not_found_handling: 404-page` serves `site/404.html` for unknown paths.
+- `site/_headers` sets the cache and security headers.
+
+Deploy from the repository root:
 
 ```bash
-cd site
-npx vercel deploy --prod
+npx wrangler deploy
 ```
 
-The domain is a `CNAME` at Hostinger (`shoku` → `cname.vercel-dns.com`), and
-Vercel issues the certificate. `index.html`, `sitemap.xml` and `robots.txt`
-carry the live URL for the canonical tag and the social image; if the domain
-ever changes, those four strings change with it.
+That needs a logged-in Wrangler on the Cloudflare account that owns
+`gradientdescent.wiki`, and Node 22.23.4 or newer.
 
-If you connect the repo in the Vercel dashboard instead of using the CLI, set
-the project's root directory to `site` and leave the build command empty.
+The custom domain is a Worker Custom Domain on the `gradientdescent.wiki`
+zone, so Cloudflare issues the certificate and `shoku` needs no DNS record of
+its own. `index.html`, `sitemap.xml` and `robots.txt` carry the live URL for
+the canonical tag and the social image; if the domain ever changes, those
+strings change with it.
+
+`vercel.json.legacy` is the old host's configuration, kept for reference only.
+It is no longer deployed.
 
 ## Legal
 
